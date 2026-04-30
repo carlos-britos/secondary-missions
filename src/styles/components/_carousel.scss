@@ -1,0 +1,155 @@
+@use '../abstracts' as *;
+
+// ========================================
+// CAROUSEL - Wrapper de Swiper
+// ========================================
+
+.carousel {
+  position: relative;
+
+  // Arrows
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border: 1px solid color(borders, default);
+    border-radius: radius(circle);
+    background-color: color(bg, surface);
+    color: color(text, secondary);
+    cursor: pointer;
+    @include flex-center;
+    @include transition((background-color, color, box-shadow), 0.2s, ease);
+    box-shadow: shadow(sm);
+
+    &:hover {
+      background-color: color(neutral, 100);
+      color: color(text, primary);
+      box-shadow: shadow(md);
+    }
+
+    &:focus-visible {
+      @include focus-ring(color(primary, 500));
+    }
+
+    &--prev {
+      left: space(-2);
+
+      @include respond-to(md) {
+        left: space(-4);
+      }
+    }
+
+    &--next {
+      right: space(-2);
+
+      @include respond-to(md) {
+        right: space(-4);
+      }
+    }
+
+    // Swiper disabled state
+    &.swiper-button-disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  // Dots / Pagination
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: space(2);
+    padding-top: space(4);
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: radius(circle);
+      background-color: color(neutral, 300);
+      opacity: 1;
+      @include transition(background-color, 0.2s, ease);
+      cursor: pointer;
+
+      &-active {
+        background-color: color(primary, 500);
+      }
+    }
+  }
+
+  // ========================================
+  // VARIANT: Hero
+  // ========================================
+  &--hero {
+    .carousel__arrow {
+      width: 44px;
+      height: 44px;
+      background-color: color(white, default, 90);
+      border: none;
+      box-shadow: shadow(md);
+
+      &--prev {
+        left: space(3);
+
+        @include respond-to(md) {
+          left: space(6);
+        }
+      }
+
+      &--next {
+        right: space(3);
+
+        @include respond-to(md) {
+          right: space(6);
+        }
+      }
+    }
+
+    .carousel__dots {
+      position: absolute;
+      bottom: space(4);
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding-top: 0;
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background-color: color(white, default, 50);
+
+        &-active {
+          background-color: color(white, default);
+        }
+      }
+    }
+  }
+
+  // ========================================
+  // VARIANT: Categories
+  // ========================================
+  &--categories {
+    .carousel__arrow {
+      width: 32px;
+      height: 32px;
+    }
+
+    .swiper {
+      // Padding interno para que el box-shadow no se corte por overflow:hidden
+      padding: space(6);
+      margin: space(-6);
+    }
+  }
+
+  // ========================================
+  // VARIANT: Products
+  // ========================================
+  &--products {
+    .swiper {
+      padding: space(6);
+      margin: space(-6);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@use '../abstracts' as *;
+
+.status-badge {
+  @include text(caption, medium);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: space(1) space(3);
+  border-radius: radius(250);
+  border: 1px solid transparent;
+  white-space: nowrap;
+
+  &--primary {
+    background-color: color(primary, 100);
+    color: color(primary, 800);
+    border-color: color(primary, 300);
+  }
+
+  &--warning {
+    background-color: color(warning, 50);
+    color: color(warning, 700);
+    border-color: color(warning, 200);
+  }
+
+  &--info {
+    background-color: color(info, 100);
+    color: color(info, 700);
+    border-color: color(info, 200);
+  }
+
+  &--success {
+    background-color: color(success, 100);
+    color: color(success, 700);
+    border-color: color(success, 200);
+  }
+
+  &--error {
+    background-color: color(error, 100);
+    color: color(error, 700);
+    border-color: color(error, 200);
+  }
+
+  &--neutral {
+    background-color: color(neutral, 100);
+    color: color(neutral, 700);
+    border-color: transparent;
+  }
+}

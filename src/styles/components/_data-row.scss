@@ -1,0 +1,65 @@
+@use '../abstracts' as *;
+
+.data-row-group {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+}
+
+.data-row {
+  display: flex;
+  align-items: baseline;
+  gap: space(3);
+
+  &__label {
+    @include text(body2, regular);
+    color: color(text, tertiary);
+    min-width: 120px;
+    white-space: nowrap;
+  }
+
+  &__value {
+    @include text(body2, regular);
+    font-family: $fontfamily-highlight;
+    color: color(text, primary);
+    flex: 1;
+    text-align: right;
+  }
+
+  // ---- Variants ----
+
+  &--total {
+    padding-top: space(1);
+    border-top: 1px solid color(borders, light);
+  }
+
+  &--total &__label {
+    @include text(body2, semibold);
+    color: color(text, primary);
+  }
+
+  &--total &__value {
+    @include text(body1, semibold);
+  }
+
+  &--highlight {
+    padding-top: space(2);
+    border-top: 1px solid color(borders, default);
+  }
+
+  &--highlight &__value {
+    font-weight: $font-weight-semibold;
+  }
+
+  &--paid &__value {
+    color: color(success, 600);
+  }
+
+  // ---- Divider ----
+
+  &__divider {
+    height: 1px;
+    background-color: color(borders, default);
+    margin: space(1) 0;
+  }
+}

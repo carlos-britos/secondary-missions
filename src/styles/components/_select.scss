@@ -1,0 +1,137 @@
+// ========================================
+// SELECT FIELD (Combobox)
+// ========================================
+
+@use '../abstracts' as *;
+
+.select-field {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+  width: 100%;
+
+  &__label {
+    @include text(caption, medium);
+    color: color(secondary, 500);
+    letter-spacing: 0.03em;
+  }
+
+  &__wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  &__input {
+    width: 100%;
+    padding: space(2) space(8) space(2) space(3);
+    font-family: $fontfamily-base;
+    @include text(body2, regular);
+    color: color(text, primary);
+    background-color: color(white, default);
+    border: 1px solid color(borders, default);
+    border-radius: radius(2);
+    outline: none;
+    cursor: pointer;
+    @include transition((border-color, box-shadow), 0.2s, ease);
+
+    &::placeholder {
+      color: color(neutral, 400);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: color(borders, hover);
+    }
+
+    &:focus {
+      border-color: color(primary, 500);
+      box-shadow: 0 0 0 2px color(primary, 100);
+      cursor: text;
+    }
+
+    &:disabled {
+      background-color: color(neutral, 50);
+      color: color(text, disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: space(3);
+    top: 50%;
+    transform: translateY(-50%);
+    color: color(neutral, 500);
+    pointer-events: auto;
+    cursor: pointer;
+    @include transition(transform, 0.2s, ease);
+
+    &--open {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: space(1);
+    padding: space(1) 0;
+    background-color: color(white, default);
+    border: 1px solid color(borders, default);
+    border-radius: radius(2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    list-style: none;
+  }
+
+  &__option {
+    padding: space(2) space(3);
+    font-family: $fontfamily-base;
+    @include text(body2, regular);
+    color: color(text, primary);
+    cursor: pointer;
+    @include transition(background-color, 0.15s, ease);
+
+    &:hover,
+    &--highlighted {
+      background-color: color(neutral, 50);
+    }
+
+    &--selected {
+      background-color: color(primary, 50);
+      color: color(primary, 700);
+      font-weight: 500;
+    }
+
+    &--selected#{&}--highlighted,
+    &--selected:hover {
+      background-color: color(primary, 100);
+    }
+  }
+
+  &__no-results {
+    padding: space(2) space(3);
+    @include text(body2, regular);
+    color: color(neutral, 400);
+    font-style: italic;
+    list-style: none;
+  }
+
+  &__error {
+    @include text(caption, regular);
+    color: color(error, 500);
+  }
+
+  &--error {
+    .select-field__input {
+      border-color: color(error, 500);
+
+      &:focus {
+        box-shadow: 0 0 0 2px color(error, 100);
+      }
+    }
+  }
+}

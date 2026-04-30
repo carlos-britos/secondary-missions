@@ -1,0 +1,59 @@
+// ========================================
+// SECTION HEADER - Header de secciones de contenido
+// ========================================
+
+@use '../abstracts' as *;
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: space(4);
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, color(primary, 100) 0%, color(primary, 200) 100%);
+    border-radius: radius(3);
+    color: color(primary, 700);
+    flex-shrink: 0;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: space(1);
+  }
+
+  &__title {
+    @include text(h3, semibold);
+    color: color(text, primary);
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include text(body2, regular);
+    color: color(text, tertiary);
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: space(3);
+  }
+}

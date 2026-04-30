@@ -1,0 +1,45 @@
+// ========================================
+// TRISTATE ICON
+// ========================================
+
+@use '../abstracts' as *;
+
+.tristate-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  color: white;
+  @include transition((transform, background-color), 0.15s, ease);
+
+  &--0 {
+    background-color: color(error, 500);
+  }
+
+  &--1 {
+    background-color: color(warning, 400);
+  }
+
+  &--2 {
+    background-color: color(success, 500);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &:not(.tristate-icon--disabled):hover {
+    transform: scale(1.15);
+  }
+
+  &:not(.tristate-icon--disabled):active {
+    transform: scale(0.95);
+  }
+}

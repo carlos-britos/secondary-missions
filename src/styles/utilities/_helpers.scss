@@ -1,0 +1,99 @@
+// ========================================
+// HELPERS - Clases utilitarias
+// ========================================
+
+@use '../abstracts' as *;
+
+// -----------------------------------------------------------------------------
+// Accesibilidad
+// -----------------------------------------------------------------------------
+
+// Screen reader only - oculta visualmente pero accesible para screen readers
+.u-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Focusable sr-only (se muestra al recibir focus)
+.u-sr-only-focusable {
+  &:not(:focus):not(:focus-within) {
+    @extend .u-sr-only;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Texto
+// -----------------------------------------------------------------------------
+
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-right {
+  text-align: right !important;
+}
+
+.u-text-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+// -----------------------------------------------------------------------------
+// Display
+// -----------------------------------------------------------------------------
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-visible {
+  visibility: visible !important;
+}
+
+.u-invisible {
+  visibility: hidden !important;
+}
+
+// -----------------------------------------------------------------------------
+// Flexbox helpers
+// -----------------------------------------------------------------------------
+
+.u-flex {
+  display: flex !important;
+}
+
+.u-flex-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.u-flex-between {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+// -----------------------------------------------------------------------------
+// Spacing reset
+// -----------------------------------------------------------------------------
+
+.u-m-0 {
+  margin: 0 !important;
+}
+
+.u-p-0 {
+  padding: 0 !important;
+}

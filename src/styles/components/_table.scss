@@ -1,0 +1,111 @@
+// ========================================
+// COMPONENT TABLE
+// ========================================
+
+@use '../abstracts' as *;
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__wrapper {
+    overflow-x: auto;
+  }
+
+  &__th {
+    @include text(caption, semibold);
+    color: color(neutral, 500);
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: space(4) space(4);
+    border-bottom: 2px solid color(borders, light);
+    white-space: nowrap;
+    background-color: color(white, default);
+
+    &--center {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__th-sortable {
+    display: flex;
+    align-items: center;
+    gap: space(2);
+  }
+
+  &__sort-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: radius(1);
+    color: color(neutral, 400);
+    cursor: pointer;
+    @include transition((color, background-color), 0.15s, ease);
+
+    &:hover {
+      color: color(primary, 600);
+      background-color: color(primary, 50);
+    }
+
+    &--active {
+      color: color(primary, 600);
+    }
+  }
+
+  &__row {
+    @include transition((background-color, box-shadow), 0.2s, ease);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid color(borders, light);
+    }
+
+    &:hover {
+      background-color: color(primary, 50, 30);
+    }
+
+    &--clickable {
+      cursor: pointer;
+
+      &:active {
+        background-color: color(primary, 100);
+      }
+    }
+  }
+
+  &__td {
+    @include text(body2, regular);
+    color: color(text, primary);
+    padding: space(3) space(4);
+    vertical-align: middle;
+
+    &--center {
+      text-align: center;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    &--footer {
+      font-family: $fontfamily-highlight;
+      border-top: 2px solid color(borders, default);
+      background-color: color(neutral, 50);
+    }
+  }
+
+  &__footer-row {
+    &:hover {
+      background-color: color(neutral, 50);
+    }
+  }
+}

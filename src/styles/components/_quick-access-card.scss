@@ -1,0 +1,55 @@
+// ========================================
+// QUICK ACCESS CARD
+// ========================================
+
+@use '../abstracts' as *;
+
+.quick-access-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: space(3);
+  padding: space(4);
+  max-width: max-content;
+  background-color: color(white, default);
+  border: 1px solid color(borders);
+  border-radius: radius(3);
+  text-decoration: none;
+  @include transition((background-color, border-color, box-shadow), 0.2s, ease);
+
+  &:hover {
+    border-color: color(primary, 200);
+    box-shadow: shadow(card);
+  }
+
+  &:focus-visible {
+    @include focus-ring(color(primary, 500));
+  }
+
+  &__icon {
+    @include flex-center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: color(primary, 100);
+    border-radius: radius(2);
+    color: color(primary, 600);
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    @include text(body2, semibold);
+    color: color(secondary, 500);
+    margin-bottom: space(1);
+  }
+
+  &__description {
+    @include text(caption, regular);
+    color: color(neutral, 600);
+    margin-bottom: 0;
+  }
+}

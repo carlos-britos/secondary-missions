@@ -1,0 +1,135 @@
+// ========================================
+// FAB (Floating Action Button)
+// ========================================
+
+@use '../abstracts' as *;
+
+.fab {
+  position: fixed;
+  bottom: space(6);
+  right: space(6);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(2);
+  font-family: $fontfamily-base;
+  font-weight: $font-weight-semibold;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  @include transition((background-color, box-shadow, transform), 0.2s, ease);
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    @include focus-ring(color(primary, 500));
+  }
+
+  // Sizes
+  &--sm {
+    @include text(caption, semibold);
+    padding: space(2) space(4);
+    border-radius: radius(6);
+
+    &.fab--icon-only {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      border-radius: radius(circle);
+    }
+  }
+
+  &--md {
+    @include text(body2, semibold);
+    padding: space(3) space(5);
+    border-radius: radius(8);
+
+    &.fab--icon-only {
+      width: 56px;
+      height: 56px;
+      padding: 0;
+      border-radius: radius(circle);
+    }
+  }
+
+  &--lg {
+    @include text(body1, semibold);
+    padding: space(4) space(6);
+    border-radius: radius(10);
+
+    &.fab--icon-only {
+      width: 72px;
+      height: 72px;
+      padding: 0;
+      border-radius: radius(circle);
+    }
+  }
+
+  // Colors
+  &--primary {
+    background-color: color(neutral, 900);
+    color: color(white);
+    box-shadow: 0 4px 12px color(neutral, 900, 30);
+
+    &:hover:not(:disabled) {
+      background-color: color(neutral, 800);
+      box-shadow: 0 6px 16px color(neutral, 900, 40);
+    }
+
+    &:active:not(:disabled) {
+      background-color: color(neutral, 700);
+    }
+  }
+
+  &--secondary {
+    background-color: color(secondary, 500);
+    color: color(white, default);
+    box-shadow: 0 4px 12px color(secondary, 500, 30);
+
+    &:hover:not(:disabled) {
+      background-color: color(secondary, 600);
+      box-shadow: 0 6px 16px color(secondary, 500, 40);
+    }
+
+    &:active:not(:disabled) {
+      background-color: color(secondary, 700);
+    }
+  }
+
+  &--black {
+    background-color: color(black, default);
+    color: color(white, default);
+    box-shadow: 0 4px 12px color(black, default, 30);
+
+    &:hover:not(:disabled) {
+      background-color: color(neutral, 800);
+      box-shadow: 0 6px 16px color(black, default, 40);
+    }
+
+    &:active:not(:disabled) {
+      background-color: color(neutral, 900);
+    }
+  }
+
+  // Disabled
+  &--disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__text {
+    white-space: nowrap;
+  }
+}

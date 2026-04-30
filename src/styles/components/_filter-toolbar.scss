@@ -1,0 +1,52 @@
+// ========================================
+// FILTER TOOLBAR - Barra de filtros minimalista
+// ========================================
+
+@use '../abstracts' as *;
+
+.filter-toolbar {
+  display: inline-flex;
+  flex-direction: column;
+  gap: space(3);
+  width: 100%;
+
+  @include respond-to(md) {
+    flex-direction: row;
+    align-items: flex-end;
+    width: auto;
+  }
+
+  &__field {
+    flex: 1;
+    min-width: 0;
+
+    @include respond-to(md) {
+      flex: 0 1 auto;
+    }
+
+    &--date {
+      @include respond-to(md) {
+        width: 180px;
+        flex: 0 0 auto;
+      }
+    }
+
+    &--select {
+      @include respond-to(md) {
+        width: 220px;
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: space(3);
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: flex-end;
+    }
+  }
+}

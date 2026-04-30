@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.confirm-modal {
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    gap: space(3);
+  }
+
+  &__icon {
+    color: color(error, 500);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  &__text {
+    @include text(body2, regular);
+    color: color(text, primary);
+
+    p {
+      margin: 0;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}

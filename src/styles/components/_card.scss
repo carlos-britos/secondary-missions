@@ -1,0 +1,56 @@
+// ========================================
+// CARD
+// ========================================
+
+@use '../abstracts' as *;
+
+.card {
+  background-color: color(white, default);
+  border: 1px solid color(borders, default);
+  border-radius: radius(3);
+
+  &--padded {
+    padding: space(4);
+
+    @include respond-to(md) {
+      padding: space(6);
+    }
+  }
+
+  &__header {
+    padding: space(4);
+    border-bottom: 1px solid color(borders, light);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__body {
+    padding: space(4);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+  }
+
+  &__footer {
+    padding: space(4);
+    border-top: 1px solid color(borders, light);
+    display: flex;
+    justify-content: flex-end;
+    gap: space(2);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+}

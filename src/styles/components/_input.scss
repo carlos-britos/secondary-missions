@@ -1,0 +1,177 @@
+// ========================================
+// INPUT FIELD
+// ========================================
+
+@use '../abstracts' as *;
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: space(1);
+  width: 100%;
+
+  &__label {
+    @include text(caption, medium);
+    color: color(secondary, 500);
+    letter-spacing: 0.03em;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__left-icon {
+    position: absolute;
+    left: space(3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: color(neutral, 400);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  &__clear {
+    position: absolute;
+    right: space(2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: color(neutral, 400);
+    border-radius: radius(1);
+    cursor: pointer;
+    @include transition((color, background-color), 0.15s, ease);
+
+    &:hover {
+      color: color(neutral, 600);
+      background-color: color(neutral, 100);
+    }
+
+    &:focus {
+      outline: none;
+      color: color(primary, 500);
+      background-color: color(primary, 50);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: space(2) space(3);
+    font-family: $fontfamily-base;
+    @include text(body2, regular);
+    color: color(text, primary);
+    background-color: color(white, default);
+    border: 1px solid color(borders, default);
+    border-radius: radius(2);
+    outline: none;
+    @include transition((border-color, box-shadow), 0.2s, ease);
+
+    &::placeholder {
+      color: color(neutral, 400);
+    }
+
+    &:hover:not(:disabled) {
+      border-color: color(borders, hover);
+    }
+
+    &:focus {
+      border-color: color(primary, 500);
+      box-shadow: 0 0 0 2px color(primary, 100);
+    }
+
+    &:disabled {
+      background-color: color(neutral, 50);
+      color: color(text, disabled);
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    @include text(caption, regular);
+    color: color(error, 500);
+  }
+
+  // Modifiers
+  &--error {
+    .input-field__input {
+      border-color: color(error, 500);
+
+      &:focus {
+        box-shadow: 0 0 0 2px color(error, 100);
+      }
+    }
+  }
+
+  &--inline {
+    .input-field__wrapper {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        background-color: color(primary, 500);
+        opacity: 0;
+        @include transition(opacity, 0.15s, ease);
+      }
+
+      &:focus-within::after {
+        opacity: 1;
+      }
+    }
+
+    .input-field__input {
+      border: none;
+      border-radius: 0;
+      padding: space(2);
+      background: transparent;
+
+      &:hover:not(:disabled) {
+        border-color: transparent;
+      }
+
+      &:focus {
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: color(neutral, 300);
+      }
+
+      &:disabled {
+        background: transparent;
+        color: color(text, primary);
+        cursor: default;
+      }
+    }
+  }
+
+  &--with-left-icon {
+    .input-field__input {
+      padding-left: space(10);
+    }
+  }
+
+  &--clearable {
+    .input-field__input {
+      padding-right: space(10);
+    }
+  }
+
+  &--with-left-icon.input-field--clearable {
+    .input-field__input {
+      padding-left: space(10);
+      padding-right: space(10);
+    }
+  }
+}

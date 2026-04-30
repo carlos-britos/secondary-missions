@@ -1,0 +1,135 @@
+@use '@styles/abstracts' as *;
+
+// ========================================
+// HERO CAROUSEL - Carrusel hero con imagen
+// fullwidth, glassmorphism card y sombra cromática
+// ========================================
+
+.hero-carousel {
+  position: relative;
+  margin-bottom: space(12);
+  overflow-x: clip;
+  overflow-y: visible;
+
+  // Swiper necesita overflow-y visible para la sombra
+  .swiper {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  &__slide {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 360px;
+    padding: space(8) space(6);
+    overflow: visible;
+
+    @include respond-to(md) {
+      min-height: 480px;
+      padding: space(12) space(10);
+    }
+
+    @include respond-to(lg) {
+      min-height: 540px;
+      padding: space(16);
+    }
+  }
+
+  // Background image — fullwidth
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+  }
+
+  // Overlay oscuro para legibilidad
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      color(black, default, 60) 0%,
+      color(black, default, 30) 50%,
+      color(black, default, 10) 100%
+    );
+    z-index: 1;
+
+    @include respond-to(md) {
+      background: linear-gradient(
+        to right,
+        color(black, default, 55) 0%,
+        color(black, default, 20) 60%,
+        transparent 100%
+      );
+    }
+  }
+
+  // Glassmorphism content card
+  &__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: space(4);
+    max-width: 100%;
+    padding: space(6);
+    border-radius: radius(4);
+    @include glass(default, 16px);
+    @include transition(background, 0.3s, ease);
+
+    @include respond-to(md) {
+      max-width: 440px;
+      padding: space(8);
+    }
+
+    @include respond-to(lg) {
+      max-width: 480px;
+    }
+  }
+
+  &__title {
+    @include text(h2, bold);
+    color: color(white, default);
+    margin: 0;
+
+    @include respond-to(md) {
+      @include text(h1, bold);
+    }
+  }
+
+  &__subtitle {
+    @include text(body1, regular);
+    color: color(white, default, 80);
+    margin: 0;
+  }
+
+  // Sombra cromática — imagen duplicada con blur que proyecta
+  // los colores reales de la parte inferior de cada slide
+  &__shadow {
+    position: absolute;
+    bottom: -20px;
+    left: 5%;
+    width: 90%;
+    height: 50%;
+    object-fit: cover;
+    object-position: center bottom;
+    z-index: -1;
+    filter: blur(40px) saturate(1.5) brightness(0.8);
+    opacity: 0.3;
+    pointer-events: none;
+    transform: scaleX(1.1);
+
+    @include respond-to(md) {
+      bottom: -20px;
+      height: 60%;
+      filter: blur(50px) saturate(1.5) brightness(0.8);
+      opacity: 0.3;
+    }
+  }
+}

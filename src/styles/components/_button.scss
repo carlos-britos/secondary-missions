@@ -1,0 +1,304 @@
+// ========================================
+// BUTTON
+// ========================================
+
+@use '../abstracts' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(2);
+  font-family: $fontfamily-base;
+  font-weight: $font-weight-semibold;
+  text-decoration: none;
+  border: none;
+  border-radius: radius(2);
+  cursor: pointer;
+  @include transition((background-color, color, box-shadow, border-color), 0.2s, ease);
+
+  &:focus-visible {
+    @include focus-ring(color(primary, 500));
+  }
+
+  // Sizes
+  &--sm {
+    @include text(caption, semibold);
+    padding: space(1) space(3);
+    gap: space(1);
+  }
+
+  &--md {
+    @include text(body2, semibold);
+    padding: space(2) space(4);
+  }
+
+  &--lg {
+    @include text(body1, semibold);
+    padding: space(3) space(6);
+  }
+
+  // Icon only
+  &--icon-only {
+    padding: space(2);
+
+    &.btn--sm {
+      padding: space(1);
+    }
+
+    &.btn--lg {
+      padding: space(3);
+    }
+  }
+
+  // Filled variant
+  &--filled {
+    &.btn--primary {
+      background-color: color(neutral, 900);
+      color: color(white);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 800);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 700);
+      }
+    }
+
+    &.btn--secondary {
+      background-color: color(primary, 700);
+      color: color(white, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(primary, 600);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(primary, 800);
+      }
+    }
+
+    &.btn--black {
+      background-color: color(black, default);
+      color: color(white, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 800);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 900);
+      }
+    }
+
+    &.btn--neutral {
+      background-color: color(neutral, 500);
+      color: color(white, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 600);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 700);
+      }
+    }
+
+    &.btn--success {
+      background-color: color(success, 500);
+      color: color(white, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(success, 600);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(success, 700);
+      }
+    }
+
+    &.btn--error {
+      background-color: color(error, 500);
+      color: color(white, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(error, 600);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(error, 700);
+      }
+    }
+  }
+
+  // Text variant
+  &--text {
+    background-color: transparent;
+    padding-left: space(2);
+    padding-right: space(2);
+
+    &.btn--primary {
+      color: color(neutral, 800);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+    }
+
+    &.btn--secondary {
+      color: color(secondary, 500);
+
+      &:hover:not(:disabled) {
+        background-color: color(secondary, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(secondary, 100);
+      }
+    }
+
+    &.btn--black {
+      color: color(black, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 200);
+      }
+    }
+
+    &.btn--neutral {
+      color: color(neutral, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 200);
+      }
+    }
+
+    &.btn--success {
+      color: color(success, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(success, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(success, 100);
+      }
+    }
+
+    &.btn--error {
+      color: color(error, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(error, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(error, 100);
+      }
+    }
+  }
+
+  // Outlined variant
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid;
+
+    &.btn--primary {
+      border-color: color(neutral, 300);
+      color: color(neutral, 800);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+    }
+
+    &.btn--secondary {
+      border-color: color(secondary, 500);
+      color: color(secondary, 500);
+
+      &:hover:not(:disabled) {
+        background-color: color(secondary, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(secondary, 100);
+      }
+    }
+
+    &.btn--black {
+      border-color: color(black, default);
+      color: color(black, default);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 200);
+      }
+    }
+
+    &.btn--neutral {
+      border-color: color(neutral, 400);
+      color: color(neutral, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(neutral, 100);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(neutral, 200);
+      }
+    }
+
+    &.btn--success {
+      border-color: color(success, 500);
+      color: color(success, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(success, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(success, 100);
+      }
+    }
+
+    &.btn--error {
+      border-color: color(error, 500);
+      color: color(error, 600);
+
+      &:hover:not(:disabled) {
+        background-color: color(error, 50);
+      }
+
+      &:active:not(:disabled) {
+        background-color: color(error, 100);
+      }
+    }
+  }
+
+  // Disabled state
+  &--disabled,
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

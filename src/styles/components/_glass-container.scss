@@ -1,0 +1,105 @@
+// ========================================
+// GLASS CONTAINER
+// ========================================
+
+@use '../abstracts' as *;
+
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+.glass-container {
+  position: relative;
+  border-radius: radius(3);
+
+  // Fallback for browsers without backdrop-filter
+  background: var(--gc-bg);
+  border: 1px solid var(--gc-border-color);
+  box-shadow: var(--gc-shadow);
+
+  @supports (backdrop-filter: blur(1px)) {
+    backdrop-filter: blur(var(--gc-blur)) saturate(var(--gc-saturate));
+    -webkit-backdrop-filter: blur(var(--gc-blur)) saturate(var(--gc-saturate));
+  }
+
+  will-change: backdrop-filter;
+  @include transition((box-shadow, border-color, transform), 0.25s, ease);
+
+  // ---------------------------------------------------------------------------
+  // Padding modifier
+  // ---------------------------------------------------------------------------
+  &--padded {
+    padding: space(4);
+
+    @include respond-to(md) {
+      padding: space(6);
+    }
+  }
+
+  // ---------------------------------------------------------------------------
+  // Rounded modifiers (generated from radius tokens)
+  // ---------------------------------------------------------------------------
+  &--rounded-none {
+    border-radius: radius(none);
+  }
+  &--rounded-1 {
+    border-radius: radius(1);
+  }
+  &--rounded-2 {
+    border-radius: radius(2);
+  }
+  &--rounded-3 {
+    border-radius: radius(3);
+  }
+  &--rounded-4 {
+    border-radius: radius(4);
+  }
+  &--rounded-5 {
+    border-radius: radius(5);
+  }
+  &--rounded-6 {
+    border-radius: radius(6);
+  }
+  &--rounded-circle {
+    border-radius: radius(circle);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Sub-components
+  // ---------------------------------------------------------------------------
+  &__header {
+    padding: space(4);
+    border-bottom: 1px solid var(--gc-border-color);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__body {
+    padding: space(4);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+  }
+
+  &__footer {
+    padding: space(4);
+    border-top: 1px solid var(--gc-border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: space(2);
+
+    @include respond-to(md) {
+      padding: space(4) space(6);
+    }
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+}

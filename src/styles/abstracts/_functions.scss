@@ -1,0 +1,162 @@
+@use 'variables' as *;
+
+// Obtiene un color del mapa $colors
+// Ejemplos:
+// color(primary, 500)
+// color(primary, 500, 15)
+// color(accent)
+// color(accent, hover)
+// color(text, primary)
+// color(bg, overlay)
+@function color($group, $key: default, $opacity: null) {
+  @if not map-has-key($colors, $group) {
+    @error "⚠️ El grupo de color `#{$group}` no existe.";
+  }
+
+  $group-map: map-get($colors, $group);
+
+  @if not map-has-key($group-map, $key) {
+    @error "⚠️ La clave `#{$key}` no existe en el grupo `#{$group}`.";
+  }
+
+  $value: map-get($group-map, $key);
+
+  @if $opacity != null {
+    @if type-of($value) != 'color' {
+      @error "⚠️ No se puede aplicar opacidad a un valor que no es color.";
+    }
+
+    @return rgba($value, $opacity / 100);
+  }
+
+  @return $value;
+}
+
+// Obtiene una sombra desde el mapa $shadows.
+// Ejemplo: shadow(md) => 0 4px 8px 0 color(neutral, 900, 14)
+@function shadow($key) {
+  @if not map-has-key($shadows, $key) {
+    @error "⚠️ La shadow `#{$key}` no existe en el mapa $shadows.";
+  }
+
+  $shadow: map-get($shadows, $key);
+
+  @if $shadow == none {
+    @return none;
+  }
+
+  $y: map-get($shadow, y);
+  $blur: map-get($shadow, blur);
+  $spread: map-get($shadow, spread);
+  $color: map-get($shadow, color);
+
+  @return 0 #{$y} #{$blur} #{$spread} color(nth($color, 1), nth($color, 2), nth($color, 3));
+}
+
+// Obtiene una propiedad de tipografía del mapa $typography.
+// Acepta un tipo de tipografía y una propiedad (size o line).
+// Ejemplo: font(h1, size) => 3rem
+@function font($type, $property: size, $viewport: desktop) {
+  @if not map-has-key($typography, $type) {
+    @error "⚠️ No existe la tipografía `#{$type}` en el mapa $typography.";
+  }
+
+  $type-map: map-get($typography, $type);
+
+  @if map-has-key($type-map, $viewport) {
+    $viewport-map: map-get($type-map, $viewport);
+
+    @if map-has-key($viewport-map, $property) {
+      @return map-get($viewport-map, $property);
+    }
+  }
+
+  @if map-has-key($type-map, default) {
+    $default-map: map-get($type-map, default);
+
+    @if map-has-key($default-map, $property) {
+      @return map-get($default-map, $property);
+    }
+  }
+
+  @error "⚠️ La propiedad `#{$property}` no existe para `#{$type}` (viewport: #{$viewport}).";
+}
+
+// Obtiene un valor de spacing desde el mapa $spacing.
+// Ejemplo: space(4) => 1rem
+// Ejemplo: space(16) => 4rem
+@function space($key) {
+  $negative: false;
+
+  // detectar negativo
+  @if type-of($key) == 'number' and $key < 0 {
+    $negative: true;
+    $key: abs($key);
+  }
+
+  @if not map-has-key($spacing, $key) {
+    @error "⚠️ El valor `#{$key}` no existe en el mapa $spacing.";
+  }
+
+  $value: map-get($spacing, $key);
+
+  @if $negative {
+    @return -$value;
+  }
+  @return $value;
+}
+
+// Obtiene un valor de border-radius desde el mapa $radius.
+// Ejemplos:
+// radius(2) => 0.5rem
+// radius(none) => 0
+// radius(global) => default
+// radius(global, small) => 0.25rem
+@function radius($keys...) {
+  $value: $radius;
+
+  @each $key in $keys {
+    @if type-of($value) == 'map' and map-has-key($value, $key) {
+      $value: map-get($value, $key);
+    } @else {
+      @error "⚠️ El border-radius `#{$key}` no existe.";
+    }
+  }
+
+  // fallback automático a default (solo si es map)
+  @if type-of($value) == 'map' {
+    @if map-has-key($value, default) {
+      @return map-get($value, default);
+    }
+
+    @error "⚠️ El border-radius solicitado es un mapa y no tiene `default`.";
+  }
+
+  @return $value;
+}
+
+// Obtiene un valor de breakpoint del mapa $breakpoints.
+// Ejemplo: breakpoint(mobile) => 360px
+@function breakpoint($key) {
+  @if not map-has-key($breakpoints, $key) {
+    @error "⚠️ El breakpoint `#{$key}` no existe.";
+  }
+
+  @return map-get($breakpoints, $key);
+}
+
+// Obtiene el valor de layout desde el mapa $layout.
+// Ejemplo: layout(container, mobile) => 1rem
+@function layout($area, $viewport) {
+  @if not map-has-key($layout, $area) {
+    @error "⚠️ El área de layout `#{$area}` no existe en el mapa $layout.";
+  }
+
+  $area-map: map-get($layout, $area);
+
+  @if map-has-key($area-map, $viewport) {
+    @return map-get($area-map, $viewport);
+  }
+
+  @error "⚠️ El viewport `#{$viewport}` no existe para el área de layout `#{$area}`.";
+}

@@ -1,0 +1,126 @@
+@use '../abstracts' as *;
+
+.toast-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: space(2);
+  padding: space(6);
+  pointer-events: none;
+
+  // Gradient backdrop
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+    animation: toast-backdrop-in 0.3s ease forwards;
+  }
+}
+
+@keyframes toast-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  padding: space(3) space(4);
+  border-radius: radius(2);
+  border: 1px solid;
+  @include text(body2, regular);
+  pointer-events: auto;
+  animation: toast-slide-in 0.25s ease forwards;
+  min-width: 320px;
+  max-width: 520px;
+
+  // Variants
+  &--success {
+    background-color: color(success, 50);
+    border-color: color(success, 200);
+    color: color(success, 800);
+
+    .toast__icon {
+      color: color(success, 600);
+    }
+  }
+
+  &--error {
+    background-color: color(error, 50);
+    border-color: color(error, 200);
+    color: color(error, 800);
+
+    .toast__icon {
+      color: color(error, 600);
+    }
+  }
+
+  &--warning {
+    background-color: color(warning, 50);
+    border-color: color(warning, 200);
+    color: color(warning, 800);
+
+    .toast__icon {
+      color: color(warning, 600);
+    }
+  }
+
+  &--info {
+    background-color: color(info, 50);
+    border-color: color(info, 200);
+    color: color(info, 800);
+
+    .toast__icon {
+      color: color(info, 600);
+    }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__message {
+    flex: 1;
+  }
+
+  &__close {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: space(1);
+    color: inherit;
+    opacity: 0.6;
+    @include transition(opacity, 0.15s, ease);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,54 @@
+@use '../abstracts' as *;
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+
+  &::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    z-index: 1050;
+    padding: space(1) space(2);
+    background-color: color(neutral, 800);
+    color: #fff;
+    border-radius: radius(1);
+    @include text(caption, regular);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    @include transition(opacity, 0.15s, ease);
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  // Positions
+  &--top::after {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: space(1);
+  }
+
+  &--bottom::after {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: space(1);
+  }
+
+  &--left::after {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: space(1);
+  }
+
+  &--right::after {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: space(1);
+  }
+}

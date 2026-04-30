@@ -1,0 +1,52 @@
+@use '../abstracts' as *;
+
+// ========================================
+// WEB CATEGORY CARD - Card de categoría storefront (uses GlassContainer)
+// ========================================
+
+.web-category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: space(3);
+  aspect-ratio: 1 / 1;
+  padding: space(4);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+
+  &__icon {
+    @include flex-center;
+    border-radius: radius(circle);
+    color: color(primary, 600);
+    width: space(12);
+    height: space(12);
+
+    svg {
+      width: space(12);
+      height: space(12);
+    }
+  }
+
+  &__icon-bg {
+    position: absolute;
+    height: 100%;
+    left: 100%;
+    transform: translateX(-50%);
+    color: color(primary, 600);
+    opacity: 0.1;
+
+    svg {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__name {
+    @include text(body2, semibold);
+    color: color(text, primary);
+    text-align: center;
+  }
+}

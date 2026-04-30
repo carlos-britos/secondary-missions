@@ -1,0 +1,94 @@
+// ========================================
+// COMPONENT: COLLAPSIBLE SECTION
+// ========================================
+
+@use '../abstracts' as *;
+
+.collapsible-section {
+  border-top: 1px solid color(borders, light);
+
+  &:first-child {
+    border-top: none;
+  }
+
+  // ---- Header (clickable) ----
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: space(3);
+    width: calc(100% + #{space(3)} * 2);
+    padding: space(4) space(3);
+    margin-left: -(space(3));
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    @include transition((background-color), 0.15s, ease);
+    border-radius: radius(1);
+
+    &:hover {
+      background-color: color(neutral, 50);
+
+      .collapsible-section__toggle-icon {
+        color: color(text, primary);
+      }
+    }
+  }
+
+  // ---- Title ----
+  &__title {
+    @include text(body2, semibold);
+    color: color(text, primary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+
+  // ---- Summary (visible when collapsed) ----
+  &__summary {
+    @include text(caption, regular);
+    color: color(text, tertiary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+    min-width: 0;
+  }
+
+  // ---- Toggle icon ----
+  &__toggle-icon {
+    flex-shrink: 0;
+    color: color(text, tertiary);
+    margin-left: auto;
+    @include transition(transform, 0.25s, ease);
+  }
+
+  &--expanded &__toggle-icon {
+    transform: rotate(180deg);
+  }
+
+  // ---- Body (animated via CSS grid) ----
+  &__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    @include transition(grid-template-rows, 0.3s, ease);
+  }
+
+  &--expanded &__body {
+    grid-template-rows: 1fr;
+  }
+
+  // ---- Content (inner padding) ----
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: space(5);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  &--expanded &__content {
+    padding-bottom: space(5);
+    overflow: visible;
+  }
+}

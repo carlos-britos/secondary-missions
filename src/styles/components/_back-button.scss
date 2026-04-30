@@ -1,0 +1,21 @@
+@use '../abstracts' as *;
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: space(1);
+  padding: space(1) space(2);
+  border: none;
+  background: transparent;
+  color: color(text, secondary);
+  cursor: pointer;
+  @include text(body2, medium);
+  border-radius: radius(2);
+  @include transition((color, background-color), 0.15s, ease);
+  align-self: flex-start;
+
+  &:hover {
+    color: color(text, primary);
+    background-color: color(neutral, 100);
+  }
+}

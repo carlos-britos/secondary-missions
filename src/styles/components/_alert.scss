@@ -1,0 +1,82 @@
+// ========================================
+// COMPONENT: ALERT
+// ========================================
+
+@use '../abstracts' as *;
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: space(2);
+  padding: space(3) space(4);
+  border-left: 3px solid transparent;
+  border-radius: radius(1);
+  @include text(caption, regular);
+
+  // ---- Icon ----
+  &__icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  // ---- Content ----
+  &__content {
+    flex: 1;
+    min-width: 0;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  // ---- Variants ----
+  &--info {
+    background-color: color(info, 50);
+    border-left-color: color(info, 500);
+    color: color(info, 700);
+
+    .alert__icon {
+      color: color(info, 500);
+    }
+  }
+
+  &--warning {
+    background-color: color(warning, 50);
+    border-left-color: color(warning, 500);
+    color: color(warning, 700);
+
+    .alert__icon {
+      color: color(warning, 500);
+    }
+  }
+
+  &--success {
+    background-color: color(success, 50);
+    border-left-color: color(success, 500);
+    color: color(success, 700);
+
+    .alert__icon {
+      color: color(success, 500);
+    }
+  }
+
+  &--error {
+    background-color: color(error, 50);
+    border-left-color: color(error, 500);
+    color: color(error, 700);
+
+    .alert__icon {
+      color: color(error, 500);
+    }
+  }
+
+  &--neutral {
+    background-color: color(neutral, 50);
+    border-left-color: color(neutral, 400);
+    color: color(neutral, 800);
+
+    .alert__icon {
+      color: color(neutral, 400);
+    }
+  }
+}

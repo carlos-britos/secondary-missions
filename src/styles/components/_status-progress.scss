@@ -1,0 +1,225 @@
+// ========================================
+// COMPONENT STATUS PROGRESS
+// ========================================
+
+@use '../abstracts' as *;
+
+.status-progress {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: space(3) space(6);
+  background-color: transparent;
+
+  // Break out of parent horizontal padding to be full-width
+  margin: 0 space(-6);
+
+  @include respond-to(md) {
+    margin: 0 space(-8);
+    padding: space(3) space(8);
+  }
+
+  // ---- Track line behind all steps ----
+  &__track {
+    position: absolute;
+    top: 50%;
+    left: space(6);
+    right: space(6);
+    height: 2px;
+    background-color: color(neutral, 200);
+    transform: translateY(-50%);
+
+    @include respond-to(md) {
+      left: space(8);
+      right: space(8);
+    }
+  }
+
+  // ---- Tooltip wrappers inherit step flex behavior ----
+  > .tooltip {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+    &:last-child {
+      flex: 0 0 auto;
+    }
+  }
+
+  // ---- Step container ----
+  &__step {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    // Colored connector line after completed/current steps (except last)
+    &--completed::after,
+    &--current::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 2px;
+      margin: 0 space(-1);
+    }
+
+    &--completed::after {
+      background-color: currentColor;
+    }
+
+    // Current step: half-colored connector not needed, just gray from track
+    &--current::after {
+      background-color: transparent;
+    }
+  }
+
+  // ---- Circle indicator ----
+  &__circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid color(neutral, 300);
+    background-color: color(white, default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    @include transition((background-color, border-color, color), 0.3s, ease);
+  }
+
+  // ---- Step label ----
+  &__label {
+    @include text(caption, medium);
+    color: color(neutral, 400);
+    white-space: nowrap;
+    background-color: color(bg, body);
+    padding: 0 space(4);
+    @include transition(color, 0.3s, ease);
+  }
+
+  // ========================================
+  // Step states
+  // ========================================
+
+  &__step--completed {
+    .status-progress__circle {
+      color: color(white, default);
+    }
+
+    .status-progress__label {
+      color: color(text, secondary);
+    }
+  }
+
+  &__step--current {
+    .status-progress__circle {
+      background-color: color(white, default);
+      border-width: 3px;
+    }
+
+    .status-progress__label {
+      font-weight: 600;
+      color: color(text, primary);
+    }
+  }
+
+  &__step--future {
+    .status-progress__circle {
+      border-color: color(neutral, 300);
+      background-color: color(white, default);
+    }
+
+    .status-progress__label {
+      color: color(neutral, 400);
+    }
+  }
+
+  &__step--cancelled {
+    .status-progress__circle {
+      background-color: color(error, 500);
+      border-color: color(error, 500);
+      color: color(white, default);
+    }
+
+    .status-progress__label {
+      color: color(error, 600);
+      font-weight: 600;
+    }
+  }
+
+  // ========================================
+  // Variant colors (via data-variant on root)
+  // ========================================
+
+  &[data-variant='neutral'] {
+    .status-progress__step--completed {
+      color: color(neutral, 400);
+
+      .status-progress__circle {
+        background-color: color(neutral, 400);
+        border-color: color(neutral, 400);
+      }
+    }
+
+    .status-progress__step--current .status-progress__circle {
+      border-color: color(neutral, 500);
+    }
+  }
+
+  &[data-variant='warning'] {
+    .status-progress__step--completed {
+      color: color(warning, 500);
+
+      .status-progress__circle {
+        background-color: color(warning, 500);
+        border-color: color(warning, 500);
+      }
+    }
+
+    .status-progress__step--current .status-progress__circle {
+      border-color: color(warning, 500);
+    }
+  }
+
+  &[data-variant='success'] {
+    .status-progress__step--completed {
+      color: color(success, 500);
+
+      .status-progress__circle {
+        background-color: color(success, 500);
+        border-color: color(success, 500);
+      }
+    }
+
+    .status-progress__step--current .status-progress__circle {
+      border-color: color(success, 500);
+    }
+  }
+
+  &[data-variant='primary'] {
+    .status-progress__step--completed {
+      color: color(primary, 600);
+
+      .status-progress__circle {
+        background-color: color(primary, 600);
+        border-color: color(primary, 600);
+      }
+    }
+
+    .status-progress__step--current .status-progress__circle {
+      border-color: color(primary, 600);
+    }
+  }
+
+  &[data-variant='error'] {
+    .status-progress__step--completed {
+      color: color(error, 500);
+
+      .status-progress__circle {
+        background-color: color(error, 500);
+        border-color: color(error, 500);
+      }
+    }
+  }
+}

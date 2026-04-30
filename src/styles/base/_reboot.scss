@@ -1,0 +1,187 @@
+// ========================================
+// REBOOT - Reset CSS moderno
+// Basado en Normalize.css + mejoras
+// ========================================
+
+@use '../abstracts' as *;
+
+// Box sizing global
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// Prevenir ajustes de font-size en orientación landscape en iOS
+// glass-orbs se aplica aquí: html no scrollea, así overflow:hidden
+// contiene las orbs sin bloquear el scroll del viewport.
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 100%;
+  background-color: color(bg, body);
+  @include glass-orbs(1000px, 0.07, 100px, 60s);
+  overflow-x: hidden;
+  overflow-y: visible;
+
+  &::before,
+  &::after {
+    position: fixed;
+  }
+}
+
+// Estilos base del body
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $fontfamily-base;
+  font-size: $base-font-size;
+  line-height: 1.5;
+  color: color(text, primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+}
+
+// Main content
+main {
+  display: block;
+}
+
+// Headings reset
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: space(4);
+  font-weight: $font-weight-semibold;
+}
+
+// Paragraphs
+p {
+  margin-top: 0;
+  margin-bottom: space(4);
+}
+
+// Links
+a {
+  color: color(text, link);
+  text-decoration: none;
+  background-color: transparent;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Lists
+ol,
+ul {
+  padding-left: space(8);
+  margin-top: 0;
+  margin-bottom: space(4);
+}
+
+li {
+  margin-bottom: space(2);
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-style: none;
+}
+
+// Figures
+figure {
+  margin: 0;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// Forms
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+// Botones clickeables
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+// Remove inner border and padding in Firefox
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+// Textarea resize vertical only
+textarea {
+  resize: vertical;
+}
+
+// Fieldset reset
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// Legend
+legend {
+  padding: 0;
+  display: table;
+  max-width: 100%;
+  white-space: normal;
+}
+
+// Hidden attribute
+[hidden] {
+  display: none !important;
+}
+
+// Remove default styling for summary
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+// Template element
+template {
+  display: none;
+}
