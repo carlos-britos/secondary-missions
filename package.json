@@ -1,0 +1,8 @@
+{
+  "name": "secondary-missions",
+  "version": "0.1.0",
+  "description": "Plataforma web gamificada de misiones secundarias para la vida real. Tablero personal con misiones unicas y semanales, sistema de logros y galeria publica.",
+  "private": true,
+  "type": "module",
+  "scripts": {}
+}

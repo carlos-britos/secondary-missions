@@ -1,0 +1,13 @@
+{
+  "app_name": "Secondary Missions",
+  "loading": "Cargando...",
+  "error": "Ocurrio un error",
+  "save": "Guardar",
+  "cancel": "Cancelar",
+  "delete": "Eliminar",
+  "edit": "Editar",
+  "create": "Crear",
+  "confirm": "Confirmar",
+  "back": "Volver",
+  "search": "Buscar"
+}

@@ -1,0 +1,2 @@
+// Feature: Galeria publica
+export {};
