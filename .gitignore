@@ -32,3 +32,4 @@ npm-debug.log*
 
 # Handoff / design exports
 *.zip
+.vercel

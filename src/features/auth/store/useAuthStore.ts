@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import type { User } from '@supabase/supabase-js'
+import { supabase } from '@shared/lib/supabase/client'
 import { onAuthStateChange } from '@shared/lib/supabase/auth'
 import { fetchUserProfile } from '../services/profileService'
 import type { UserProfile } from '../types'
@@ -46,25 +47,38 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
   initialize: () => {
     const { fetchProfile } = get()
 
+    supabase.auth
+      .getSession()
+      .then(async ({ data: { session } }) => {
+        const user = session?.user ?? null
+        set({ user, isAuthenticated: !!user })
+        if (user) {
+          await fetchProfile(user.id)
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (get().isLoading) {
+          set({ isLoading: false })
+        }
+      })
+
     const {
       data: { subscription },
     } = onAuthStateChange(async (event, session) => {
-      const user = session?.user ?? null
-      set({ user, isAuthenticated: !!user })
+      if (event === 'INITIAL_SESSION') return
 
-      if (
-        user &&
-        (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')
-      ) {
-        await fetchProfile(user.id)
-      }
+      const user = session?.user ?? null
 
       if (event === 'SIGNED_OUT') {
         get().clearAuth()
+        return
       }
 
-      if (get().isLoading) {
-        set({ isLoading: false })
+      set({ user, isAuthenticated: !!user })
+
+      if (user && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
+        await fetchProfile(user.id)
       }
     })
 
