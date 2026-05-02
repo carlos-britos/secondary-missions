@@ -1,0 +1,264 @@
+@use '../../../styles/abstracts' as *;
+
+.card {
+  @include card-surface;
+  padding: space(5);
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+}
+
+.common::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-common, transparent);
+}
+
+.rare::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-rare, transparent);
+}
+
+.epic::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-epic, transparent);
+}
+
+.legendary::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    $color-rarity-legendary,
+    $color-rarity-legendary-edge,
+    $color-rarity-legendary,
+    transparent
+  );
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+}
+
+.rarityGem {
+  font-size: 12px;
+
+  .common & {
+    color: $color-rarity-common;
+  }
+  .rare & {
+    color: $color-rarity-rare;
+  }
+  .epic & {
+    color: $color-rarity-epic;
+  }
+  .legendary & {
+    color: $color-rarity-legendary;
+    filter: drop-shadow(0 0 4px $color-rarity-legendary-glow);
+  }
+}
+
+.type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.editBtn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid $color-line;
+  border-radius: radius(sm);
+  color: $color-text-muted;
+  font-size: 11px;
+  font-weight: 500;
+  padding: space(1) space(3);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: $color-text-muted;
+    color: $color-text-dim;
+  }
+}
+
+.title {
+  font-family: $fontfamily-display;
+  font-weight: 500;
+  font-size: 17px;
+  color: $color-text;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 13px;
+  color: $color-text-dim;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(1);
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: space(1) space(2);
+  border-radius: radius(full);
+  background: $color-bg-card-hover;
+  border: 1px solid $color-line;
+  color: $color-text-muted;
+  letter-spacing: 0.02em;
+}
+
+.expiry {
+  font-size: 11px;
+  font-family: $fontfamily-mono;
+  color: $color-text-faint;
+  letter-spacing: 0.04em;
+}
+
+// Countdown
+.countdown {
+  font-size: 12px;
+  font-family: $fontfamily-mono;
+  letter-spacing: 0.04em;
+}
+
+.none {
+  color: $color-text-faint;
+}
+
+.normal {
+  color: $color-text-muted;
+}
+
+.warning {
+  color: $color-warning;
+}
+
+.critical {
+  color: $color-danger;
+  font-weight: 600;
+}
+
+.expired {
+  color: $color-danger;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+// Completion count
+.completionCount {
+  font-size: 14px;
+  font-family: $fontfamily-mono;
+  font-weight: 600;
+  color: $color-rarity-rare;
+  letter-spacing: 0.02em;
+}
+
+// Status dates
+.completedDate,
+.failedDate {
+  font-size: 11px;
+  font-family: $fontfamily-mono;
+  color: $color-text-faint;
+  letter-spacing: 0.04em;
+}
+
+.completedDate {
+  color: $color-success;
+  opacity: 0.7;
+}
+
+.failedDate {
+  color: $color-danger;
+  opacity: 0.7;
+}
+
+// Action buttons
+.actionBtn {
+  align-self: flex-end;
+  height: 36px;
+  padding: 0 space(5);
+  border-radius: radius(sm);
+  border: 1px solid $color-success;
+  background: rgba($color-success, 0.1);
+  color: $color-success;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-success, 0.2);
+    box-shadow: 0 0 12px rgba($color-success, 0.15);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.actionIncrement {
+  border-color: $color-rarity-rare;
+  background: rgba($color-rarity-rare, 0.1);
+  color: $color-rarity-rare;
+  font-size: 15px;
+  font-weight: 700;
+  min-width: 48px;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-rarity-rare, 0.2);
+    box-shadow: 0 0 12px rgba($color-rarity-rare, 0.15);
+  }
+}
+
+.cardActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: space(2);
+}
+
+.archiveBtn {
+  height: 36px;
+  padding: 0 space(4);
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: transparent;
+  color: $color-text-faint;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-muted;
+    color: $color-text-muted;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

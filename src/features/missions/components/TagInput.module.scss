@@ -1,0 +1,71 @@
+@use '../../../styles/abstracts' as *;
+
+.container {
+  width: 100%;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(2);
+  padding: space(2) space(3);
+  min-height: 42px;
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: $color-bg-deep;
+  align-items: center;
+  transition: border-color 0.2s ease;
+
+  &:focus-within {
+    border-color: $color-rarity-epic;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: space(1);
+  padding: space(1) space(2);
+  border-radius: radius(full);
+  background: $color-bg-card-hover;
+  border: 1px solid $color-line-strong;
+  color: $color-text-dim;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.chipRemove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: radius(circle);
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $color-danger;
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 80px;
+  border: none;
+  background: transparent;
+  color: $color-text;
+  font-size: 13px;
+  outline: none;
+
+  &::placeholder {
+    color: $color-text-faint;
+  }
+}

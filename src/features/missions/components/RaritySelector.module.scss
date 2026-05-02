@@ -1,0 +1,108 @@
+@use '../../../styles/abstracts' as *;
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: space(2);
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: space(1);
+  padding: space(3) space(2);
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $color-bg-card-hover;
+  }
+}
+
+.gem {
+  font-size: 18px;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.common {
+  .gem {
+    color: $color-rarity-common;
+  }
+  .label {
+    color: $color-rarity-common;
+  }
+
+  &.active {
+    border-color: $color-rarity-common;
+    background: $color-rarity-common-soft;
+    .gem {
+      filter: drop-shadow(0 0 6px $color-rarity-common-glow);
+    }
+  }
+}
+
+.rare {
+  .gem {
+    color: $color-rarity-rare;
+  }
+  .label {
+    color: $color-rarity-rare;
+  }
+
+  &.active {
+    border-color: $color-rarity-rare;
+    background: $color-rarity-rare-soft;
+    .gem {
+      filter: drop-shadow(0 0 8px $color-rarity-rare-glow);
+    }
+  }
+}
+
+.epic {
+  .gem {
+    color: $color-rarity-epic;
+  }
+  .label {
+    color: $color-rarity-epic;
+  }
+
+  &.active {
+    border-color: $color-rarity-epic;
+    background: $color-rarity-epic-soft;
+    .gem {
+      filter: drop-shadow(0 0 10px $color-rarity-epic-glow);
+      transform: scale(1.1);
+    }
+  }
+}
+
+.legendary {
+  .gem {
+    color: $color-rarity-legendary;
+  }
+  .label {
+    color: $color-rarity-legendary;
+  }
+
+  &.active {
+    border-color: $color-rarity-legendary;
+    background: $color-rarity-legendary-soft;
+    .gem {
+      filter: drop-shadow(0 0 12px $color-rarity-legendary-glow);
+      transform: scale(1.15);
+    }
+  }
+}
