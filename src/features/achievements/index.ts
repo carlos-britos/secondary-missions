@@ -1,2 +1,5 @@
-// Feature: Sistema de logros
-export {};
+export { AchievementsPage } from './components/AchievementsPage'
+export { AchievementToast } from './components/AchievementToast'
+export { useAchievements } from './hooks/useAchievements'
+export { evaluateAchievements, createAutoAchievements } from './services/achievementService'
+export type { Achievement, AchievementWithStatus } from './types'

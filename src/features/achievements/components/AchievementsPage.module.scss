@@ -1,0 +1,68 @@
+@use '../../../styles/abstracts' as *;
+
+.page {
+  padding: space(6);
+  min-height: 100%;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  color: $color-text-muted;
+  font-family: $fontfamily-mono;
+  font-size: 14px;
+}
+
+.section {
+  margin-bottom: space(10);
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: space(5);
+}
+
+.sectionTitle {
+  font-family: $fontfamily-display;
+  font-weight: 500;
+  font-size: 20px;
+  color: $color-text;
+  margin: 0;
+}
+
+.counter {
+  font-size: 12px;
+  font-family: $fontfamily-mono;
+  color: $color-text-muted;
+  letter-spacing: 0.04em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: space(3);
+
+  @include media-up(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gridDimmed {
+  margin-top: space(4);
+  opacity: 0.5;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: $color-text-faint;
+  font-style: italic;
+  margin: 0;
+}

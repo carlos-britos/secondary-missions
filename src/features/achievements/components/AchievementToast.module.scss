@@ -1,0 +1,52 @@
+@use '../../../styles/abstracts' as *;
+
+.toast {
+  position: fixed;
+  bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  padding: space(3) space(5);
+  border-radius: radius(md);
+  background: linear-gradient(
+    135deg,
+    rgba($color-rarity-legendary, 0.15),
+    rgba($color-bg-raised, 0.95)
+  );
+  border: 1px solid rgba($color-rarity-legendary, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 24px rgba($color-rarity-legendary, 0.15);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  max-width: calc(100vw - space(8));
+}
+
+.icon {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-rarity-legendary;
+}
+
+.name {
+  font-family: $fontfamily-display;
+  font-size: 15px;
+  font-weight: 500;
+  color: $color-text;
+}
