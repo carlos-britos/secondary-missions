@@ -1,32 +1,51 @@
-// Colores base
-$color-bg: #fafaf9;
-$color-surface: #ffffff;
-$color-text-primary: #18181b;
-$color-text-secondary: #71717a;
-$color-text-muted: #a1a1aa;
-$color-border: #e4e4e7;
-$color-divider: #f4f4f5;
+// Dark RPG editorial palette — Hades/Slay the Spire inspired
 
-// Rareza (acento RPG)
-$rarity-common: #71717a;
-$rarity-rare: #3b82f6;
-$rarity-epic: #a855f7;
-$rarity-legendary: #f59e0b;
+// Backgrounds
+$color-bg: #0e0d12;
+$color-bg-deep: #07060a;
+$color-bg-raised: #16141c;
+$color-bg-card: #1a1822;
+$color-bg-card-hover: #221f2c;
+$color-surface-glass: rgba(38, 34, 50, 0.6);
 
-// Estados
-$color-success: #22c55e;
-$color-danger: #ef4444;
-$color-warning: #eab308;
+// Text
+$color-text: #ece8f0;
+$color-text-dim: #a39bb4;
+$color-text-muted: #6c647d;
+$color-text-faint: #463f55;
 
-// Sombras
-$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-$shadow-rare:
-  0 0 0 1px rgba(59, 130, 246, 0.15),
-  0 2px 8px rgba(59, 130, 246, 0.08);
-$shadow-epic:
-  0 0 0 1px rgba(168, 85, 247, 0.18),
-  0 2px 12px rgba(168, 85, 247, 0.1);
-$shadow-legendary:
-  0 0 0 1px rgba(245, 158, 11, 0.2),
-  0 2px 16px rgba(245, 158, 11, 0.12);
+// Lines
+$color-line: rgba(255, 255, 255, 0.07);
+$color-line-strong: rgba(255, 255, 255, 0.14);
+
+// Rarities
+$rarity-common: #8a8499;
+$rarity-common-soft: rgba(138, 132, 153, 0.16);
+$rarity-common-glow: rgba(138, 132, 153, 0.18);
+
+$rarity-rare: #6aa6ff;
+$rarity-rare-soft: rgba(106, 166, 255, 0.16);
+$rarity-rare-glow: rgba(106, 166, 255, 0.45);
+
+$rarity-epic: #c98bff;
+$rarity-epic-soft: rgba(201, 139, 255, 0.18);
+$rarity-epic-glow: rgba(201, 139, 255, 0.55);
+
+$rarity-legendary: #ffb648;
+$rarity-legendary-soft: rgba(255, 182, 72, 0.2);
+$rarity-legendary-glow: rgba(255, 182, 72, 0.65);
+$rarity-legendary-edge: #ffd57a;
+
+// Status
+$color-success: #5cd9a6;
+$color-danger: #ff7a85;
+$color-warning: #ffcc66;
+
+// Shadows
+$shadow-card:
+  0 1px 0 rgba(255, 255, 255, 0.04) inset,
+  0 8px 24px rgba(0, 0, 0, 0.35);
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.45);
+$shadow-button: 0 8px 24px rgba(255, 255, 255, 0.08);

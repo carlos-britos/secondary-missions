@@ -1,48 +1,24 @@
-// =============================================================================
-// MIXINS FOR DESIGN SYSTEM
-// =============================================================================
-
 @use 'variables' as *;
 @use 'functions' as *;
 
-// -----------------------------------------------------------------------------
-// Flexbox Helpers
-// -----------------------------------------------------------------------------
 @mixin flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-// -----------------------------------------------------------------------------
-// Transition mixin
-// -----------------------------------------------------------------------------
-// Usage: @include transition(property, duration, timing-function);
-// Example: @include transition(color, 0.2s, ease-out);
-// Example with multiple properties: @include transition((opacity, transform), 0.15s, ease-out);
 @mixin transition($property, $duration: 0.3s, $timing-function: ease) {
   transition: $property $duration $timing-function;
 }
 
-// -----------------------------------------------------------------------------
-// Focus ring mixin for accessibility
-// -----------------------------------------------------------------------------
-// Usage: @include focus-ring($color);
-// Example: @include focus-ring(#ff6000);
-@mixin focus-ring($color: #0074c2, $width: 2px, $offset: 2px) {
+@mixin focus-ring($color: $color-rarity-epic, $width: 2px, $offset: 2px) {
   outline: $width solid $color;
   outline-offset: $offset;
 }
 
-// -----------------------------------------------------------------------------
-// Responsive breakpoint mixins
-// -----------------------------------------------------------------------------
-// Media query helper
-// Ejemplo:
-// @include respond-to(tablet) { ... }
 @mixin respond-to($breakpoint) {
   @if not map-has-key($breakpoints, $breakpoint) {
-    @error "⚠️ El breakpoint `#{$breakpoint}` no existe en el mapa $breakpoints.";
+    @error "El breakpoint `#{$breakpoint}` no existe en el mapa $breakpoints.";
   }
 
   @media (min-width: map-get($breakpoints, $breakpoint)) {
@@ -50,164 +26,13 @@
   }
 }
 
-// Alias for backwards compatibility
 @mixin media-up($breakpoint) {
   @include respond-to($breakpoint) {
     @content;
   }
 }
 
-// -----------------------------------------------------------------------------
-// Glassmorphism mixin
-// -----------------------------------------------------------------------------
-// Aplica efecto de cristal esmerilado con variantes predefinidas.
-// Incluye fallback automático para navegadores sin backdrop-filter.
-//
-// @param {String} $variant [default] - Variante visual:
-//   - default: cristal sutil, ideal para cards sobre fondos vibrantes
-//   - light: cristal claro, más legible, ideal para headers y navbars
-//   - heavy: cristal opaco, máxima legibilidad sobre cualquier fondo
-//   - dark: cristal oscuro, ideal para paneles sobre fondos claros
-//   - tinted: cristal con tinte del color primario
-// @param {Number} $blur [12px] - Intensidad del desenfoque
-//
-// @example
-//   .hero-card { @include glass; }
-//   .header    { @include glass(light, 14px); }
-//   .sidebar   { @include glass(dark); }
-//   .panel     { @include glass(tinted, 16px); }
-@mixin glass($variant: default, $blur: 12px) {
-  // Fallback para navegadores sin backdrop-filter
-  @if $variant == dark {
-    background: color(black, default, 75);
-  } @else if $variant == tinted {
-    background: color(primary, 500, 70);
-  } @else {
-    background: color(white, default, 85);
-  }
-
-  @supports (backdrop-filter: blur(1px)) {
-    @if $variant == default {
-      background: color(white, default, 12);
-      border: 1px solid color(white, default, 20);
-      box-shadow:
-        0 8px 32px color(black, default, 10),
-        inset 0 1px 0 color(white, default, 15);
-    } @else if $variant == light {
-      background: color(white, default, 45);
-      border: 1px solid color(white, default, 30);
-      box-shadow: 0 8px 32px color(black, default, 6);
-    } @else if $variant == heavy {
-      background: color(white, default, 55);
-      border: 1px solid color(white, default, 40);
-      box-shadow: 0 4px 16px color(black, default, 8);
-    } @else if $variant == dark {
-      background: color(black, default, 25);
-      border: 1px solid color(white, default, 15);
-      box-shadow: 0 8px 32px color(black, default, 20);
-    } @else if $variant == tinted {
-      background: color(primary, 500, 15);
-      border: 1px solid color(primary, 300, 25);
-      box-shadow: 0 8px 32px color(primary, 900, 12);
-    }
-
-    backdrop-filter: blur($blur);
-    -webkit-backdrop-filter: blur($blur);
-  }
-
-  will-change: backdrop-filter;
-}
-
-// -----------------------------------------------------------------------------
-// Glass orbs mixin
-// -----------------------------------------------------------------------------
-// Adds animated ::before and ::after circles that drift behind a glass element
-// to make the backdrop-filter effect visible.
-// The element must have position: relative and overflow: hidden.
-//
-// @param {Number} $size [250px] - Diameter of each orb
-// @param {Number} $opacity [0.07] - Orb opacity (keep low for subtlety)
-// @param {Number} $blur [60px] - Blur applied to orbs
-// @param {Number} $duration [12s] - Full animation cycle duration
-//
-// @example
-//   .card { @include glass(light); @include glass-orbs; }
-//   .hero { @include glass; @include glass-orbs(300px, 0.1, 80px, 16s); }
-@mixin glass-orbs($size: 250px, $opacity: 0.07, $blur: 60px, $duration: 12s) {
-  position: relative;
-  overflow: hidden;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    width: $size;
-    height: $size;
-    border-radius: radius(circle);
-    filter: blur($blur);
-    opacity: $opacity;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &::before {
-    background: color(primary, 500);
-    animation: glass-orb-drift-1 $duration ease-in-out infinite alternate;
-  }
-
-  &::after {
-    background: color(secondary, 500);
-    animation: glass-orb-drift-2 $duration ease-in-out infinite alternate;
-  }
-}
-
-@keyframes glass-orb-drift-1 {
-  0% {
-    top: -15%;
-    left: -15%;
-  }
-
-  50% {
-    top: 60%;
-    left: 50%;
-  }
-
-  100% {
-    top: -10%;
-    left: 80%;
-  }
-}
-
-@keyframes glass-orb-drift-2 {
-  0% {
-    bottom: -15%;
-    right: -15%;
-  }
-
-  50% {
-    bottom: 50%;
-    right: 60%;
-  }
-
-  100% {
-    bottom: -10%;
-    right: 80%;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Content container mixin
-// -----------------------------------------------------------------------------
-// Constrains content width and centers it with horizontal padding.
-// Use across any section that needs consistent max-width + padding.
-//
-// @param {Number} $max-width [1400px] - Maximum content width
-// @param {String|Number} $padding [4] - Horizontal padding (space key or raw value)
-//
-// @example
-//   .section { @include content-container; }
-//   .narrow  { @include content-container(960px, 6); }
-@mixin content-container($max-width: 1400px, $padding: 4) {
+@mixin content-container($max-width: 1200px, $padding: 6) {
   max-width: $max-width;
   padding-inline: space($padding);
   margin-inline: auto;
@@ -215,45 +40,34 @@
   box-sizing: border-box;
 }
 
-// -----------------------------------------------------------------------------
-// Typography mixin
-// -----------------------------------------------------------------------------
-// Applies responsive typography from design system automatically
-//
-// @param {String} $type - Typography variant (h1-h6, body1-2, caption, etc.)
-// @param {String} $weight [regular] - Font weight (regular, medium, semibold, bold)
-// @param {Boolean} $mobile-only [false] - Skip responsive scaling for desktop
-//
-// @example Basic usage
-//   .card-title {
-//     @include text(h3, semibold);
-//   }
-//
-// @example Mobile-only (no responsive scaling)
-//   .mobile-label {
-//     @include text(label, medium, $mobile-only: true);
-//   }
 @mixin text($type, $weight: regular, $mobile-only: false) {
-  // Validate typography type exists in design system
   @if not map-has-key($typography, $type) {
-    @error "⚠️ Invalid typography type `#{$type}`. Valid types: #{map-keys($typography)}";
+    @error "Invalid typography type `#{$type}`. Valid types: #{map-keys($typography)}";
   }
 
-  // Validate font weight exists in weights map
   @if not map-has-key($font-weights, $weight) {
-    @error "⚠️ Invalid font weight `#{$weight}`. Valid weights: #{map-keys($font-weights)}";
+    @error "Invalid font weight `#{$weight}`. Valid weights: #{map-keys($font-weights)}";
   }
 
-  // Apply base typography styles from mobile config
   font-size: font($type, size, mobile);
   line-height: font($type, line, mobile);
   font-weight: map-get($font-weights, $weight);
 
-  // Apply responsive desktop scaling if not mobile-only
   @if not $mobile-only {
     @include respond-to(md) {
       font-size: font($type, size, desktop);
       line-height: font($type, line, desktop);
     }
   }
+}
+
+@mixin rpg-gradient-bg {
+  background: radial-gradient(ellipse at top, rgba($color-rarity-epic, 0.1) 0%, $color-bg-deep 50%);
+}
+
+@mixin card-surface {
+  background: $color-bg-card;
+  border: 1px solid $color-line;
+  border-radius: radius(md);
+  box-shadow: shadow(card);
 }

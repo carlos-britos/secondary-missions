@@ -1,186 +1,88 @@
 // =======================================
+// DARK RPG EDITORIAL THEME
+// Hades / Slay the Spire inspired
+// =======================================
+
+// =======================================
 // COLORS BASE
 // =======================================
 
-$color-primary-50: #f5f3ff;
-$color-primary-100: #ede9fe;
-$color-primary-200: #ddd6fe;
-$color-primary-300: #c4b5fd;
-$color-primary-400: #a78bfa;
-$color-primary-500: #8b5cf6;
-$color-primary-600: #7c3aed;
-$color-primary-700: #6d28d9;
-$color-primary-800: #5b21b6;
-$color-primary-900: #4c1d95;
+$color-bg: #0e0d12;
+$color-bg-deep: #07060a;
+$color-bg-raised: #16141c;
+$color-bg-card: #1a1822;
+$color-bg-card-hover: #221f2c;
+$color-surface-glass: rgba(38, 34, 50, 0.6);
 
-$color-secondary-50: #fdf4ff;
-$color-secondary-100: #fae8ff;
-$color-secondary-200: #f5d0fe;
-$color-secondary-300: #f0abfc;
-$color-secondary-400: #e879f9;
-$color-secondary-500: #d946ef;
-$color-secondary-600: #c026d3;
-$color-secondary-700: #a21caf;
-$color-secondary-800: #86198f;
-$color-secondary-900: #701a75;
+$color-text: #ece8f0;
+$color-text-dim: #a39bb4;
+$color-text-muted: #6c647d;
+$color-text-faint: #463f55;
 
-$color-neutral-50: #f6f4f8;
-$color-neutral-100: #ede9f0;
-$color-neutral-200: #dcd7e4;
-$color-neutral-300: #c7c2d1;
-$color-neutral-400: #b2adbd;
-$color-neutral-500: #9e99aa;
-$color-neutral-600: #7f7a8a;
-$color-neutral-700: #5e5a67;
-$color-neutral-800: #474350;
-$color-neutral-900: #2e2b33;
+$color-line: rgba(255, 255, 255, 0.07);
+$color-line-strong: rgba(255, 255, 255, 0.14);
 
-$color-success-50: #f0fdf4;
-$color-success-100: #dcfce7;
-$color-success-200: #bbf7d0;
-$color-success-300: #86efac;
-$color-success-400: #4ade80;
-$color-success-500: #22c55e;
-$color-success-600: #16a34a;
-$color-success-700: #15803d;
-$color-success-800: #166534;
-$color-success-900: #14532d;
+// Rarities
+$color-rarity-common: #8a8499;
+$color-rarity-common-soft: rgba(138, 132, 153, 0.16);
+$color-rarity-common-glow: rgba(138, 132, 153, 0.18);
 
-$color-warning-50: #fff8e1;
-$color-warning-100: #ffecb3;
-$color-warning-200: #ffe082;
-$color-warning-300: #ffd54f;
-$color-warning-400: #ffc233;
-$color-warning-500: #ffa800;
-$color-warning-600: #e69500;
-$color-warning-700: #cc8400;
-$color-warning-800: #b36f00;
-$color-warning-900: #804d00;
+$color-rarity-rare: #6aa6ff;
+$color-rarity-rare-soft: rgba(106, 166, 255, 0.16);
+$color-rarity-rare-glow: rgba(106, 166, 255, 0.45);
 
-$color-error-50: #fef2f2;
-$color-error-100: #fee2e2;
-$color-error-200: #fecaca;
-$color-error-300: #fca5a5;
-$color-error-400: #f87171;
-$color-error-500: #ef4444;
-$color-error-600: #dc2626;
-$color-error-700: #b91c1c;
-$color-error-800: #991b1b;
-$color-error-900: #7f1d1d;
+$color-rarity-epic: #c98bff;
+$color-rarity-epic-soft: rgba(201, 139, 255, 0.18);
+$color-rarity-epic-glow: rgba(201, 139, 255, 0.55);
 
-$color-danger-50: #fef2f2;
-$color-danger-100: #fee2e2;
-$color-danger-200: #fecaca;
-$color-danger-500: #ef4444;
-$color-danger-600: #dc2626;
-$color-danger-700: #b91c1c;
-$color-danger-800: #991b1b;
+$color-rarity-legendary: #ffb648;
+$color-rarity-legendary-soft: rgba(255, 182, 72, 0.2);
+$color-rarity-legendary-glow: rgba(255, 182, 72, 0.65);
+$color-rarity-legendary-edge: #ffd57a;
 
-$color-info-50: #f0f8ff;
-$color-info-100: #e0f0fe;
-$color-info-200: #b9e2fe;
-$color-info-500: #0c98eb;
-$color-info-600: #0074c2;
-$color-info-700: #015fa3;
-$color-info-800: #065186;
+// Status
+$color-success: #5cd9a6;
+$color-danger: #ff7a85;
+$color-warning: #ffcc66;
 
 $color-black: #000000;
 $color-white: #ffffff;
 
 // =======================================
-// COLORS SEMANTIC
+// COLORS SEMANTIC MAP
 // =======================================
 
 $colors: (
-  primary: (
-    50: $color-primary-50,
-    100: $color-primary-100,
-    200: $color-primary-200,
-    300: $color-primary-300,
-    400: $color-primary-400,
-    500: $color-primary-500,
-    600: $color-primary-600,
-    700: $color-primary-700,
-    800: $color-primary-800,
-    900: $color-primary-900,
+  bg: (
+    body: $color-bg,
+    deep: $color-bg-deep,
+    raised: $color-bg-raised,
+    card: $color-bg-card,
+    card-hover: $color-bg-card-hover,
+    surface: $color-surface-glass,
+    overlay: rgba($color-black, 0.6),
   ),
-  secondary: (
-    50: $color-secondary-50,
-    100: $color-secondary-100,
-    200: $color-secondary-200,
-    300: $color-secondary-300,
-    400: $color-secondary-400,
-    500: $color-secondary-500,
-    600: $color-secondary-600,
-    700: $color-secondary-700,
-    800: $color-secondary-800,
-    900: $color-secondary-900,
+  text: (
+    primary: $color-text,
+    secondary: $color-text-dim,
+    tertiary: $color-text-muted,
+    disabled: $color-text-faint,
+    link: $color-rarity-rare,
   ),
-  neutral: (
-    50: $color-neutral-50,
-    100: $color-neutral-100,
-    200: $color-neutral-200,
-    300: $color-neutral-300,
-    400: $color-neutral-400,
-    500: $color-neutral-500,
-    600: $color-neutral-600,
-    700: $color-neutral-700,
-    800: $color-neutral-800,
-    900: $color-neutral-900,
+  rarity: (
+    common: $color-rarity-common,
+    rare: $color-rarity-rare,
+    epic: $color-rarity-epic,
+    legendary: $color-rarity-legendary,
   ),
-  success: (
-    50: $color-success-50,
-    100: $color-success-100,
-    200: $color-success-200,
-    300: $color-success-300,
-    400: $color-success-400,
-    500: $color-success-500,
-    600: $color-success-600,
-    700: $color-success-700,
-    800: $color-success-800,
-    900: $color-success-900,
+  status: (
+    success: $color-success,
+    danger: $color-danger,
+    warning: $color-warning,
   ),
-  warning: (
-    50: $color-warning-50,
-    100: $color-warning-100,
-    200: $color-warning-200,
-    300: $color-warning-300,
-    400: $color-warning-400,
-    500: $color-warning-500,
-    600: $color-warning-600,
-    700: $color-warning-700,
-    800: $color-warning-800,
-    900: $color-warning-900,
-  ),
-  error: (
-    50: $color-error-50,
-    100: $color-error-100,
-    200: $color-error-200,
-    300: $color-error-300,
-    400: $color-error-400,
-    500: $color-error-500,
-    600: $color-error-600,
-    700: $color-error-700,
-    800: $color-error-800,
-    900: $color-error-900,
-  ),
-  danger: (
-    50: $color-danger-50,
-    100: $color-danger-100,
-    200: $color-danger-200,
-    500: $color-danger-500,
-    600: $color-danger-600,
-    700: $color-danger-700,
-    800: $color-danger-800,
-  ),
-  info: (
-    50: $color-info-50,
-    100: $color-info-100,
-    200: $color-info-200,
-    500: $color-info-500,
-    600: $color-info-600,
-    700: $color-info-700,
-    800: $color-info-800,
+  borders: (
+    default: $color-line,
+    strong: $color-line-strong,
   ),
   white: (
     default: $color-white,
@@ -188,52 +90,13 @@ $colors: (
   black: (
     default: $color-black,
   ),
-  text: (
-    primary: $color-neutral-900,
-    secondary: $color-neutral-700,
-    tertiary: $color-neutral-500,
-    disabled: $color-neutral-400,
-    link: $color-primary-600,
-  ),
-  bg: (
-    body: $color-neutral-50,
-    body-checkout: $color-neutral-100,
-
-    topbar-header: $color-primary-500,
-    main-header: $color-primary-500,
-    bottombar-header: $color-white,
-    number-cart-header: $color-primary-500,
-
-    main-footer: #3c0697,
-    bottombar-footer: $color-primary-600,
-
-    surface: $color-white,
-    overlay: rgba($color-black, 0.5),
-  ),
-  content: (
-    topbar-header: $color-white,
-    bottombar-header: $color-primary-900,
-  ),
-  icons: (
-    main-header: $color-black,
-    main-footer: $color-primary-500,
-  ),
-  borders: (
-    default: $color-neutral-200,
-    light: $color-neutral-100,
-    hover: $color-neutral-300,
-  ),
 );
 
 // =======================================
-// SPACING BASE
+// SPACING
 // =======================================
 
 $spacing-base: 0.25rem;
-
-// =======================================
-// SPACING SEMANTIC
-// =======================================
 
 $spacing: (
   1: $spacing-base * 1,
@@ -248,71 +111,58 @@ $spacing: (
   10: $spacing-base * 10,
   11: $spacing-base * 11,
   12: $spacing-base * 12,
-  13: $spacing-base * 13,
   14: $spacing-base * 14,
-  15: $spacing-base * 15,
   16: $spacing-base * 16,
-  17: $spacing-base * 17,
-  18: $spacing-base * 18,
-  19: $spacing-base * 19,
   20: $spacing-base * 20,
-  21: $spacing-base * 21,
-  22: $spacing-base * 22,
-  23: $spacing-base * 23,
   24: $spacing-base * 24,
 );
 
 // =======================================
-// TYPOGRAPHY BASE
+// TYPOGRAPHY
 // =======================================
 
-$fontfamily-highlight: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
-$fontfamily-base: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$fontfamily-sans: 'Geist', ui-sans-serif, system-ui, sans-serif;
+$fontfamily-mono: 'Geist Mono', ui-monospace, monospace;
+$fontfamily-display: 'Fraunces', 'Geist', serif;
+$fontfamily-base: $fontfamily-sans;
+$fontfamily-highlight: $fontfamily-display;
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
 
-// Font weights map for semantic usage in text mixin
 $font-weights: (
   400: $font-weight-regular,
   500: $font-weight-medium,
   600: $font-weight-semibold,
   700: $font-weight-bold,
   regular: $font-weight-regular,
-  // 400
   medium: $font-weight-medium,
-  // 500
   semibold: $font-weight-semibold,
-  // 600
-  bold: $font-weight-bold, // 700
-) !default;
+  bold: $font-weight-bold,
+);
 
 $base-font-size: 1rem;
 
-// =======================================
-// TYPOGRAPHY SEMANTIC
-// =======================================
-
 $typography: (
   h1: (
+    desktop: (
+      size: $base-font-size * 2.75,
+      line: $base-font-size * 3,
+    ),
+    mobile: (
+      size: $base-font-size * 2,
+      line: $base-font-size * 2.25,
+    ),
+  ),
+  h2: (
     desktop: (
       size: $base-font-size * 2,
       line: $base-font-size * 2.5,
     ),
     mobile: (
       size: $base-font-size * 1.75,
-      line: $base-font-size * 2.25,
-    ),
-  ),
-  h2: (
-    desktop: (
-      size: $base-font-size * 1.75,
-      line: $base-font-size * 2.25,
-    ),
-    mobile: (
-      size: $base-font-size * 1.625,
       line: $base-font-size * 2.125,
     ),
   ),
@@ -322,8 +172,8 @@ $typography: (
       line: $base-font-size * 2,
     ),
     mobile: (
-      size: $base-font-size * 1.5,
-      line: $base-font-size * 2,
+      size: $base-font-size * 1.375,
+      line: $base-font-size * 1.75,
     ),
   ),
   h4: (
@@ -332,27 +182,7 @@ $typography: (
       line: $base-font-size * 1.75,
     ),
     mobile: (
-      size: $base-font-size * 1.25,
-      line: $base-font-size * 1.75,
-    ),
-  ),
-  h5: (
-    desktop: (
       size: $base-font-size * 1.125,
-      line: $base-font-size * 1.625,
-    ),
-    mobile: (
-      size: $base-font-size * 1.125,
-      line: $base-font-size * 1.625,
-    ),
-  ),
-  h6: (
-    desktop: (
-      size: $base-font-size * 0.875,
-      line: $base-font-size * 1.625,
-    ),
-    mobile: (
-      size: $base-font-size * 0.875,
       line: $base-font-size * 1.625,
     ),
   ),
@@ -362,8 +192,8 @@ $typography: (
       line: $base-font-size * 1.625,
     ),
     mobile: (
-      size: $base-font-size,
-      line: $base-font-size * 1.625,
+      size: $base-font-size * 0.9375,
+      line: $base-font-size * 1.5,
     ),
   ),
   body2: (
@@ -372,7 +202,7 @@ $typography: (
       line: $base-font-size * 1.25,
     ),
     mobile: (
-      size: $base-font-size * 0.875,
+      size: $base-font-size * 0.8125,
       line: $base-font-size * 1.25,
     ),
   ),
@@ -382,13 +212,13 @@ $typography: (
       line: $base-font-size,
     ),
     mobile: (
-      size: $base-font-size * 0.75,
+      size: $base-font-size * 0.6875,
       line: $base-font-size,
     ),
   ),
   overline: (
     desktop: (
-      size: $base-font-size * 0.75,
+      size: $base-font-size * 0.625,
       line: $base-font-size,
     ),
     mobile: (
@@ -398,58 +228,45 @@ $typography: (
   ),
   button: (
     desktop: (
-      size: $base-font-size,
+      size: $base-font-size * 0.875,
       line: $base-font-size,
     ),
     mobile: (
-      size: $base-font-size,
+      size: $base-font-size * 0.875,
       line: $base-font-size,
     ),
   ),
   label: (
     desktop: (
-      size: $base-font-size * 0.875,
-      line: $base-font-size * 0.875,
+      size: $base-font-size * 0.8125,
+      line: $base-font-size,
     ),
     mobile: (
-      size: $base-font-size * 0.875,
-      line: $base-font-size * 0.875,
+      size: $base-font-size * 0.8125,
+      line: $base-font-size,
     ),
   ),
 );
 
 // =======================================
-// BORDER RADIUS BASE
+// BORDER RADIUS
 // =======================================
 
 $radius-base: 0.25rem;
 
-// =======================================
-// BORDER RADIUS SEMANTIC
-// =======================================
-
 $radius: (
   none: 0,
-  1: $radius-base,
-  2: $radius-base * 2,
-  3: $radius-base * 3,
-  4: $radius-base * 4,
-  5: $radius-base * 5,
-  6: $radius-base * 6,
-  7: $radius-base * 7,
-  8: $radius-base * 8,
-  9: $radius-base * 9,
-  10: $radius-base * 10,
-  25: $radius-base * 25,
-  250: $radius-base * 250,
+  sm: 8px,
+  md: 12px,
+  lg: 18px,
+  xl: 24px,
   circle: 50%,
-
+  full: 9999px,
   global: (
-    default: $radius-base * 2,
-    small: $radius-base,
+    default: 12px,
+    small: 8px,
   ),
-
-  button: $radius-base * 2,
+  button: 14px,
 );
 
 // =======================================
@@ -466,77 +283,16 @@ $breakpoints: (
 );
 
 // =======================================
-// SHADOW BASE
+// SHADOWS
 // =======================================
 
-$shadow-unit: 0.25rem;
-
-// =======================================
-// SHADOW SEMANTIC
-// =======================================
+$shadow-card:
+  0 1px 0 rgba(255, 255, 255, 0.04) inset,
+  0 8px 24px rgba(0, 0, 0, 0.35);
+$shadow-button: 0 8px 24px rgba(255, 255, 255, 0.08);
 
 $shadows: (
   none: none,
-  card: (
-    y: 2px,
-    blur: 8px,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      6,
-    ),
-  ),
-  xs: (
-    y: $shadow-unit * 1,
-    blur: $shadow-unit * 2,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      10,
-    ),
-  ),
-  sm: (
-    y: $shadow-unit * 2,
-    blur: $shadow-unit * 4,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      12,
-    ),
-  ),
-  md: (
-    y: $shadow-unit * 2,
-    blur: $shadow-unit * 4,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      15,
-    ),
-  ),
-
-  lg: (
-    y: $shadow-unit * 4,
-    blur: $shadow-unit * 8,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      18,
-    ),
-  ),
-
-  xl: (
-    y: $shadow-unit * 6,
-    blur: $shadow-unit * 12,
-    spread: 0,
-    color: (
-      neutral,
-      900,
-      22,
-    ),
-  ),
+  card: $shadow-card,
+  button: $shadow-button,
 );
