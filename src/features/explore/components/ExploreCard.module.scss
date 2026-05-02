@@ -1,0 +1,139 @@
+@use '../../../styles/abstracts' as *;
+
+.card {
+  @include card-surface;
+  padding: space(5);
+  display: flex;
+  flex-direction: column;
+  gap: space(3);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+
+  &:hover {
+    border-color: $color-line-strong;
+    transform: translateY(-2px);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+}
+
+.common::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-common, transparent);
+}
+
+.rare::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-rare, transparent);
+}
+
+.epic::before {
+  background: linear-gradient(90deg, transparent, $color-rarity-epic, transparent);
+}
+
+.legendary::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    $color-rarity-legendary,
+    $color-rarity-legendary-edge,
+    $color-rarity-legendary,
+    transparent
+  );
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+}
+
+.rarityGem {
+  font-size: 12px;
+
+  .common & {
+    color: $color-rarity-common;
+  }
+  .rare & {
+    color: $color-rarity-rare;
+  }
+  .epic & {
+    color: $color-rarity-epic;
+  }
+  .legendary & {
+    color: $color-rarity-legendary;
+    filter: drop-shadow(0 0 4px $color-rarity-legendary-glow);
+  }
+}
+
+.type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.adoptions {
+  margin-left: auto;
+  font-size: 11px;
+  font-family: $fontfamily-mono;
+  color: $color-text-faint;
+  letter-spacing: 0.04em;
+}
+
+.title {
+  font-family: $fontfamily-display;
+  font-weight: 500;
+  font-size: 17px;
+  color: $color-text;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.description {
+  font-size: 13px;
+  color: $color-text-dim;
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: space(1);
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: space(1) space(2);
+  border-radius: radius(full);
+  background: $color-bg-card-hover;
+  border: 1px solid $color-line;
+  color: $color-text-muted;
+  letter-spacing: 0.02em;
+}
+
+.author {
+  font-size: 12px;
+  font-family: $fontfamily-mono;
+  color: $color-text-faint;
+  letter-spacing: 0.02em;
+}
