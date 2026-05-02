@@ -1,0 +1,258 @@
+@use '../../../styles/abstracts' as *;
+
+.page {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at top,
+    rgba($color-rarity-epic, 0.08) 0%,
+    $color-bg-deep 60%
+  );
+  display: flex;
+  flex-direction: column;
+  padding: 60px 28px 30px;
+  overflow-y: auto;
+}
+
+.skipButton {
+  position: absolute;
+  top: 60px;
+  right: 22px;
+  background: none;
+  border: none;
+  color: $color-text-muted;
+  font-family: $fontfamily-mono;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 10;
+
+  &:hover {
+    color: $color-text-dim;
+  }
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 36px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 2px;
+  border-radius: 999px;
+  background: $color-line;
+  transition: background 0.4s ease;
+}
+
+.progressBarActive {
+  background: $color-text;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.sigil {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba($color-rarity-epic, 0.15), transparent 70%);
+  border: 1px solid $color-line-strong;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  align-self: flex-start;
+}
+
+.sigilText {
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-size: 40px;
+  color: $color-text;
+  text-shadow: 0 0 18px rgba($color-rarity-epic, 0.45);
+}
+
+.eyebrow {
+  font-family: $fontfamily-mono;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.title {
+  margin: 0;
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: $color-text;
+}
+
+.body {
+  margin: 16px 0 0;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: $color-text-dim;
+}
+
+.raritiesDemo {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.missionRow {
+  padding: 10px 12px;
+  background: $color-bg-card;
+  border: 1px solid $color-line;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rarity_common {
+  border-left: 3px solid $color-rarity-common;
+
+  .missionDot {
+    background: $color-rarity-common;
+  }
+}
+
+.rarity_rare {
+  border-left: 3px solid $color-rarity-rare;
+
+  .missionDot {
+    background: $color-rarity-rare;
+  }
+}
+
+.rarity_epic {
+  border-left: 3px solid $color-rarity-epic;
+
+  .missionDot {
+    background: $color-rarity-epic;
+  }
+}
+
+.rarity_legendary {
+  border-left: 3px solid $color-rarity-legendary;
+
+  .missionDot {
+    background: $color-rarity-legendary;
+    box-shadow: 0 0 8px rgba($color-rarity-legendary, 0.5);
+  }
+}
+
+.missionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.missionTitle {
+  font-size: 12.5px;
+  color: $color-text;
+}
+
+.typesDemo {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.typeCard {
+  padding: 14px;
+  border-radius: 12px;
+  background: $color-bg-card;
+  border: 1px solid $color-line;
+}
+
+.typeCardSigil {
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-size: 22px;
+  color: $color-text;
+  margin-bottom: 6px;
+}
+
+.typeCardTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.typeCardSub {
+  font-size: 11px;
+  color: $color-text-dim;
+  margin-top: 3px;
+}
+
+.typeCardFoot {
+  font-size: 9.5px;
+  font-family: $fontfamily-mono;
+  color: $color-text-faint;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.actions {
+  margin-top: auto;
+  padding-top: space(6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ctaButton {
+  width: 100%;
+  height: 52px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(180deg, #fff, #d6d2dd);
+  color: $color-bg;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.backButton {
+  margin-top: 12px;
+  background: none;
+  border: none;
+  color: $color-text-muted;
+  font-size: 12px;
+  cursor: pointer;
+
+  &:hover {
+    color: $color-text-dim;
+  }
+}

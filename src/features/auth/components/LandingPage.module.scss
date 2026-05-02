@@ -1,0 +1,312 @@
+@use '../../../styles/abstracts' as *;
+
+.page {
+  min-height: 100vh;
+  position: relative;
+  background: radial-gradient(ellipse at top, rgba($color-rarity-epic, 0.1) 0%, $color-bg-deep 50%);
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 20% 80%,
+    rgba($color-rarity-legendary, 0.04),
+    transparent 40%
+  );
+}
+
+.header {
+  padding: space(2) space(6) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+}
+
+.wordmarkIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+  border: 1px solid $color-line-strong;
+  background: linear-gradient(
+    135deg,
+    rgba($color-rarity-legendary, 0.2),
+    rgba($color-rarity-epic, 0.2)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-size: 16px;
+  color: $color-text;
+}
+
+.wordmarkText {
+  font-family: $fontfamily-mono;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-text-dim;
+}
+
+.loginLink {
+  background: none;
+  border: none;
+  color: $color-text-dim;
+  font-size: 12px;
+  font-family: $fontfamily-mono;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.hero {
+  padding: 54px space(6) 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.chapter {
+  font-family: $fontfamily-mono;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.title {
+  margin: 0;
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: $color-text;
+
+  @include respond-to(md) {
+    font-size: 56px;
+  }
+}
+
+.titleHighlight {
+  color: $color-rarity-legendary;
+  text-shadow: 0 0 24px rgba($color-rarity-legendary, 0.65);
+}
+
+.titleDim {
+  color: $color-text-dim;
+  font-style: italic;
+}
+
+.description {
+  margin: 24px 0 0;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: $color-text-dim;
+  max-width: 320px;
+
+  @include respond-to(md) {
+    max-width: 420px;
+  }
+}
+
+.cta {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(180deg, #fff, #d6d2dd);
+  color: $color-bg;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ctaSub {
+  text-align: center;
+  font-family: $fontfamily-mono;
+  font-size: 10.5px;
+  color: $color-text-muted;
+  letter-spacing: 0.1em;
+}
+
+.raritiesSection {
+  margin: 24px space(6) 0;
+  padding: 20px;
+  border-radius: radius(lg);
+  border: 1px solid $color-line;
+  background: rgba(255, 255, 255, 0.02);
+  position: relative;
+  z-index: 2;
+}
+
+.raritiesSectionTitle {
+  font-family: $fontfamily-mono;
+  font-size: 9.5px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  margin-bottom: 14px;
+}
+
+.raritiesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.rarityRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.rarityCommon {
+  --rc: #{$color-rarity-common};
+}
+
+.rarityRare {
+  --rc: #{$color-rarity-rare};
+}
+
+.rarityEpic {
+  --rc: #{$color-rarity-epic};
+}
+
+.rarityLegendary {
+  --rc: #{$color-rarity-legendary};
+  --rc-glow: #{rgba($color-rarity-legendary, 0.65)};
+}
+
+.rarityDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--rc);
+  flex-shrink: 0;
+
+  .rarityLegendary & {
+    box-shadow: 0 0 12px var(--rc-glow);
+  }
+}
+
+.rarityLabel {
+  flex: 1;
+  font-size: 13px;
+  color: $color-text;
+  font-weight: 600;
+
+  .rarityLegendary & {
+    font-family: $fontfamily-display;
+    font-style: italic;
+    font-weight: 500;
+  }
+}
+
+.raritySub {
+  font-size: 11px;
+  color: $color-text-muted;
+  font-family: $fontfamily-mono;
+  letter-spacing: 0.02em;
+}
+
+.pillars {
+  padding: 32px space(6) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.pillar {
+  display: flex;
+  gap: 14px;
+}
+
+.pillarSigil {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border-radius: 10px;
+  border: 1px solid $color-line-strong;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $fontfamily-display;
+  font-style: italic;
+  font-size: 18px;
+  color: $color-text;
+}
+
+.pillarContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillarTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text;
+}
+
+.pillarBody {
+  font-size: 12.5px;
+  color: $color-text-dim;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+.epilogue {
+  margin-top: 40px;
+  padding: 0 space(6);
+  font-family: $fontfamily-mono;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: $color-text-faint;
+  text-transform: uppercase;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}

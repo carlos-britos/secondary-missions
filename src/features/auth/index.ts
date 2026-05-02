@@ -1,2 +1,9 @@
-// Feature: Autenticacion y onboarding
-export {};
+export { LandingPage } from './components/LandingPage'
+export { LoginPage } from './components/LoginPage'
+export { RegisterPage } from './components/RegisterPage'
+export { ProfileSetupPage } from './components/ProfileSetupPage'
+export { OnboardingPage } from './components/OnboardingPage'
+export { useAuth } from './hooks/useAuth'
+export { useProfile } from './hooks/useProfile'
+export { useAuthStore } from './store/useAuthStore'
+export type { UserProfile, UserLanguage, AuthState } from './types'

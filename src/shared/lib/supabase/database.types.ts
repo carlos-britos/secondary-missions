@@ -8,16 +8,267 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      achievements: {
+        Row: {
+          category: string
+          condition_type: string
+          condition_value: Json | null
+          created_at: string | null
+          description_key: string
+          icon: string
+          id: string
+          name_key: string
+        }
+        Insert: {
+          category?: string
+          condition_type: string
+          condition_value?: Json | null
+          created_at?: string | null
+          description_key: string
+          icon?: string
+          id: string
+          name_key: string
+        }
+        Update: {
+          category?: string
+          condition_type?: string
+          condition_value?: Json | null
+          created_at?: string | null
+          description_key?: string
+          icon?: string
+          id?: string
+          name_key?: string
+        }
+        Relationships: []
+      }
+      mission_completions: {
+        Row: {
+          created_at: string | null
+          id: string
+          mission_id: string
+          note: string | null
+          photo_url: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          mission_id: string
+          note?: string | null
+          photo_url?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          mission_id?: string
+          note?: string | null
+          photo_url?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'mission_completions_mission_id_fkey'
+            columns: ['mission_id']
+            isOneToOne: false
+            referencedRelation: 'missions'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      missions: {
+        Row: {
+          adoption_count: number | null
+          completed_at: string | null
+          completion_count: number | null
+          created_at: string | null
+          description: string | null
+          expires_at: string | null
+          id: string
+          is_public: boolean | null
+          public_status: Database['public']['Enums']['public_status'] | null
+          rarity: Database['public']['Enums']['mission_rarity']
+          rejection_reason: string | null
+          status: Database['public']['Enums']['mission_status'] | null
+          tags: string[] | null
+          title: string
+          type: Database['public']['Enums']['mission_type']
+          updated_at: string | null
+          user_id: string
+          weekly_reset_day: number | null
+        }
+        Insert: {
+          adoption_count?: number | null
+          completed_at?: string | null
+          completion_count?: number | null
+          created_at?: string | null
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_public?: boolean | null
+          public_status?: Database['public']['Enums']['public_status'] | null
+          rarity?: Database['public']['Enums']['mission_rarity']
+          rejection_reason?: string | null
+          status?: Database['public']['Enums']['mission_status'] | null
+          tags?: string[] | null
+          title: string
+          type?: Database['public']['Enums']['mission_type']
+          updated_at?: string | null
+          user_id: string
+          weekly_reset_day?: number | null
+        }
+        Update: {
+          adoption_count?: number | null
+          completed_at?: string | null
+          completion_count?: number | null
+          created_at?: string | null
+          description?: string | null
+          expires_at?: string | null
+          id?: string
+          is_public?: boolean | null
+          public_status?: Database['public']['Enums']['public_status'] | null
+          rarity?: Database['public']['Enums']['mission_rarity']
+          rejection_reason?: string | null
+          status?: Database['public']['Enums']['mission_status'] | null
+          tags?: string[] | null
+          title?: string
+          type?: Database['public']['Enums']['mission_type']
+          updated_at?: string | null
+          user_id?: string
+          weekly_reset_day?: number | null
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          id: string
+          user_id: string
+          type: string
+          title: string
+          message: string | null
+          mission_id: string | null
+          is_read: boolean
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          type: string
+          title: string
+          message?: string | null
+          mission_id?: string | null
+          is_read?: boolean
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          type?: string
+          title?: string
+          message?: string | null
+          mission_id?: string | null
+          is_read?: boolean
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'notifications_mission_id_fkey'
+            columns: ['mission_id']
+            isOneToOne: false
+            referencedRelation: 'missions'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      user_achievements: {
+        Row: {
+          achievement_id: string
+          id: string
+          unlocked_at: string | null
+          user_id: string
+        }
+        Insert: {
+          achievement_id: string
+          id?: string
+          unlocked_at?: string | null
+          user_id: string
+        }
+        Update: {
+          achievement_id?: string
+          id?: string
+          unlocked_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'user_achievements_achievement_id_fkey'
+            columns: ['achievement_id']
+            isOneToOne: false
+            referencedRelation: 'achievements'
+            referencedColumns: ['id']
+          },
+        ]
+      }
+      users: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          id: string
+          is_admin: boolean
+          language: Database['public']['Enums']['user_language']
+          onboarding_completed: boolean
+          updated_at: string
+          username: string | null
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id: string
+          is_admin?: boolean
+          language?: Database['public']['Enums']['user_language']
+          onboarding_completed?: boolean
+          updated_at?: string
+          username?: string | null
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          id?: string
+          is_admin?: boolean
+          language?: Database['public']['Enums']['user_language']
+          onboarding_completed?: boolean
+          updated_at?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      delete_user_account: {
+        Args: Record<string, never>
+        Returns: undefined
+      }
+      increment_adoption_count: {
+        Args: { mission_id_input: string }
+        Returns: undefined
+      }
+      increment_completion_count: {
+        Args: { mission_id_input: string }
+        Returns: undefined
+      }
     }
     Enums: {
-      [_ in never]: never
+      mission_rarity: 'common' | 'rare' | 'epic' | 'legendary'
+      mission_status: 'active' | 'completed' | 'failed' | 'expired'
+      mission_type: 'one_time' | 'weekly'
+      public_status: 'draft' | 'pending' | 'approved' | 'rejected'
+      user_language: 'es' | 'en'
     }
     CompositeTypes: {
       [_ in never]: never
@@ -142,6 +393,12 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      mission_rarity: ['common', 'rare', 'epic', 'legendary'],
+      mission_status: ['active', 'completed', 'failed', 'expired'],
+      mission_type: ['one_time', 'weekly'],
+      public_status: ['draft', 'pending', 'approved', 'rejected'],
+      user_language: ['es', 'en'],
+    },
   },
 } as const
