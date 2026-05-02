@@ -1,0 +1,231 @@
+@use '../../../styles/abstracts' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba($color-black, 0.6);
+  z-index: 200;
+}
+
+.modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: $color-bg-raised;
+  border-top-left-radius: radius(lg);
+  border-top-right-radius: radius(lg);
+  z-index: 201;
+  padding: space(6);
+  max-height: 85vh;
+  overflow-y: auto;
+
+  @include media-up(md) {
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    max-width: 420px;
+    width: 100%;
+    border-radius: radius(lg);
+    max-height: 80vh;
+  }
+}
+
+.title {
+  font-family: $fontfamily-display;
+  font-weight: 600;
+  font-size: 18px;
+  color: $color-text;
+  margin: 0 0 space(2);
+}
+
+.missionTitle {
+  font-size: 14px;
+  color: $color-text-dim;
+  margin: 0 0 space(6);
+  padding-bottom: space(4);
+  border-bottom: 1px solid $color-line;
+}
+
+.field {
+  margin-bottom: space(5);
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  margin-bottom: space(2);
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: space(3);
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: $color-bg-card;
+  color: $color-text;
+  font-size: 14px;
+  font-family: $fontfamily-sans;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: $color-text-faint;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-rarity-epic;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.fileInput {
+  display: none;
+}
+
+.selectPhotoBtn {
+  width: 100%;
+  height: 44px;
+  border-radius: radius(sm);
+  border: 1px dashed $color-line-strong;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-rarity-epic;
+    color: $color-rarity-epic;
+    background: rgba($color-rarity-epic, 0.05);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: space(2);
+}
+
+.preview {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+}
+
+.previewActions {
+  display: flex;
+  gap: space(2);
+}
+
+.changeBtn,
+.removeBtn {
+  flex: 1;
+  height: 32px;
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.changeBtn {
+  color: $color-text-muted;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-muted;
+    color: $color-text-dim;
+  }
+}
+
+.removeBtn {
+  color: $color-danger;
+
+  &:hover:not(:disabled) {
+    border-color: $color-danger;
+    background: rgba($color-danger, 0.05);
+  }
+}
+
+.actions {
+  display: flex;
+  gap: space(3);
+  margin-top: space(6);
+}
+
+.cancelBtn {
+  flex: 1;
+  height: 44px;
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-muted;
+    color: $color-text-dim;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.submitBtn {
+  flex: 1;
+  height: 44px;
+  border-radius: radius(sm);
+  border: none;
+  background: linear-gradient(135deg, $color-success, darken($color-success, 10%));
+  color: $color-bg;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.1);
+    box-shadow: 0 4px 16px rgba($color-success, 0.3);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}

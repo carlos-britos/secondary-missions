@@ -1,0 +1,217 @@
+@use '../../../styles/abstracts' as *;
+
+.page {
+  padding: space(6);
+  min-height: 100%;
+  position: relative;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: space(6);
+}
+
+.greeting {
+  font-family: $fontfamily-mono;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: $color-text-muted;
+}
+
+.logoutButton {
+  height: 32px;
+  padding: 0 space(4);
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: $color-danger;
+    color: $color-danger;
+  }
+}
+
+.tabBar {
+  display: flex;
+  gap: space(1);
+  margin-bottom: space(6);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: space(1);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  padding: space(2) space(4);
+  border-radius: radius(full);
+  border: 1px solid $color-line;
+  background: transparent;
+  color: $color-text-muted;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: $color-line-strong;
+    color: $color-text-dim;
+  }
+}
+
+.tabActive {
+  background: $color-bg-card-hover;
+  border-color: $color-rarity-epic;
+  color: $color-text;
+  box-shadow: 0 0 12px rgba($color-rarity-epic, 0.15);
+}
+
+.tabCount {
+  font-size: 11px;
+  font-family: $fontfamily-mono;
+  min-width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: radius(circle);
+  background: rgba($color-text-faint, 0.3);
+  color: $color-text-muted;
+
+  .tabActive & {
+    background: rgba($color-rarity-epic, 0.2);
+    color: $color-rarity-epic;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  color: $color-text-muted;
+  font-family: $fontfamily-mono;
+  font-size: 14px;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 50vh;
+  gap: space(4);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  color: $color-text-faint;
+  font-family: $fontfamily-display;
+}
+
+.emptyText {
+  font-size: 14px;
+  color: $color-text-dim;
+  margin: 0;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+.emptyButton {
+  height: 44px;
+  padding: 0 space(8);
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(180deg, #fff, #d6d2dd);
+  color: $color-bg;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.12);
+  }
+}
+
+.emptyTab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30vh;
+}
+
+.emptyTabText {
+  font-size: 14px;
+  color: $color-text-faint;
+  margin: 0;
+  font-style: italic;
+}
+
+.missionsList {
+  display: flex;
+  flex-direction: column;
+  gap: space(4);
+  padding-bottom: space(20);
+}
+
+.fab {
+  position: fixed;
+  bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+  right: space(6);
+  width: 52px;
+  height: 52px;
+  border-radius: radius(circle);
+  border: none;
+  background: linear-gradient(135deg, $color-rarity-epic, darken($color-rarity-epic, 15%));
+  color: $color-white;
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow:
+    0 4px 16px rgba($color-rarity-epic, 0.4),
+    0 0 0 0 rgba($color-rarity-epic, 0);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow:
+      0 6px 24px rgba($color-rarity-epic, 0.5),
+      0 0 0 4px rgba($color-rarity-epic, 0.15);
+  }
+
+  &:active {
+    transform: scale(0.96);
+  }
+
+  @include media-up(md) {
+    bottom: space(8);
+    right: space(8);
+    width: 56px;
+    height: 56px;
+  }
+}
