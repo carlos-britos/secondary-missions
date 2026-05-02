@@ -25,6 +25,6 @@ export interface Notification {
   title: string
   message: string | null
   mission_id: string | null
-  is_read: boolean
+  is_read: boolean | null
   created_at: string | null
 }
