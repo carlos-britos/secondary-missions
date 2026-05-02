@@ -1,0 +1,45 @@
+{
+  "title": "Configuración",
+  "subtitle": "Personalizá tu experiencia",
+  "profile": {
+    "title": "Perfil",
+    "avatar_upload": "Cambiar avatar",
+    "username": "Nombre de usuario",
+    "username_placeholder": "tu_nombre",
+    "username_checking": "Verificando...",
+    "username_available": "Disponible",
+    "username_taken": "Ya está en uso",
+    "bio": "Bio",
+    "bio_placeholder": "Contá algo sobre vos...",
+    "save": "Guardar perfil",
+    "saved": "Perfil actualizado"
+  },
+  "language": {
+    "title": "Idioma",
+    "es": "Español",
+    "en": "English"
+  },
+  "password": {
+    "title": "Cambiar contraseña",
+    "new": "Nueva contraseña",
+    "new_placeholder": "Mínimo 6 caracteres",
+    "confirm": "Confirmar contraseña",
+    "confirm_placeholder": "Repetí la contraseña",
+    "save": "Cambiar contraseña",
+    "saved": "Contraseña actualizada",
+    "error": "Error al cambiar la contraseña",
+    "mismatch": "Las contraseñas no coinciden",
+    "min_length": "Mínimo 6 caracteres"
+  },
+  "danger": {
+    "title": "Zona peligrosa",
+    "delete_title": "Eliminar cuenta",
+    "delete_description": "Esta acción es irreversible. Se eliminarán todas tus misiones, logros, fotos y datos asociados.",
+    "delete_button": "Eliminar mi cuenta",
+    "delete_confirm_title": "¿Estás seguro?",
+    "delete_confirm_message": "Escribí tu nombre de usuario para confirmar:",
+    "delete_confirm_placeholder": "tu_nombre_de_usuario",
+    "delete_confirm_button": "Sí, eliminar todo",
+    "delete_error": "Error al eliminar la cuenta"
+  }
+}

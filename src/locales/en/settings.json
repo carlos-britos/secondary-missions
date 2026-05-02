@@ -1,0 +1,45 @@
+{
+  "title": "Settings",
+  "subtitle": "Customize your experience",
+  "profile": {
+    "title": "Profile",
+    "avatar_upload": "Change avatar",
+    "username": "Username",
+    "username_placeholder": "your_name",
+    "username_checking": "Checking...",
+    "username_available": "Available",
+    "username_taken": "Already taken",
+    "bio": "Bio",
+    "bio_placeholder": "Tell something about yourself...",
+    "save": "Save profile",
+    "saved": "Profile updated"
+  },
+  "language": {
+    "title": "Language",
+    "es": "Español",
+    "en": "English"
+  },
+  "password": {
+    "title": "Change password",
+    "new": "New password",
+    "new_placeholder": "Minimum 6 characters",
+    "confirm": "Confirm password",
+    "confirm_placeholder": "Repeat password",
+    "save": "Change password",
+    "saved": "Password updated",
+    "error": "Error changing password",
+    "mismatch": "Passwords don't match",
+    "min_length": "Minimum 6 characters"
+  },
+  "danger": {
+    "title": "Danger zone",
+    "delete_title": "Delete account",
+    "delete_description": "This action is irreversible. All your missions, achievements, photos and associated data will be deleted.",
+    "delete_button": "Delete my account",
+    "delete_confirm_title": "Are you sure?",
+    "delete_confirm_message": "Type your username to confirm:",
+    "delete_confirm_placeholder": "your_username",
+    "delete_confirm_button": "Yes, delete everything",
+    "delete_error": "Error deleting account"
+  }
+}

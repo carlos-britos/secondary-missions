@@ -1,2 +1,1 @@
-// Feature: Configuracion de cuenta
-export {};
+export { SettingsPage } from './components/SettingsPage'
