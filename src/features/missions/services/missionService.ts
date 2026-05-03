@@ -1,4 +1,5 @@
 import { supabase } from '@shared/lib/supabase/client'
+import { validateImageFile } from '@shared/lib/validateImageFile'
 import type { Mission, MissionInsert, MissionUpdate } from '../types'
 
 export async function fetchUserMissions(userId: string): Promise<Mission[]> {
@@ -56,7 +57,8 @@ async function uploadCompletionPhoto(
   missionId: string,
   file: File
 ): Promise<string> {
-  const ext = file.name.split('.').pop() ?? 'jpg'
+  validateImageFile(file)
+  const ext = (file.name.split('.').pop() ?? 'jpg').toLowerCase()
   const path = `${userId}/${missionId}/${Date.now()}.${ext}`
 
   const { error } = await supabase.storage.from('completion-photos').upload(path, file, {

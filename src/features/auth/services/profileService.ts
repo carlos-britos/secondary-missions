@@ -1,4 +1,5 @@
 import { supabase } from '@shared/lib/supabase/client'
+import { validateImageFile } from '@shared/lib/validateImageFile'
 import type { UserProfile, UserProfileUpdate } from '../types'
 
 export async function fetchUserProfile(userId: string): Promise<UserProfile | null> {
@@ -44,7 +45,8 @@ export async function checkUsernameAvailability(
 }
 
 export async function uploadAvatar(userId: string, file: File): Promise<string> {
-  const ext = file.name.split('.').pop()
+  validateImageFile(file)
+  const ext = file.name.split('.').pop()!.toLowerCase()
   const path = `${userId}/avatar.${ext}`
 
   const { error: uploadError } = await supabase.storage
