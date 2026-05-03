@@ -37,13 +37,10 @@ export function LoginPage() {
       navigate('/dashboard', { replace: true })
     } catch (err: unknown) {
       const code = (err as { code?: string })?.code
-      const msg = (err as { message?: string })?.message ?? ''
-      if (code === 'email_not_confirmed') {
-        setServerError(t('errors.email_not_confirmed'))
-      } else if (code === 'invalid_credentials') {
+      if (code === 'email_not_confirmed' || code === 'invalid_credentials') {
         setServerError(t('errors.invalid_credentials'))
       } else {
-        setServerError(msg || t('errors.generic'))
+        setServerError(t('errors.generic'))
       }
     }
   }
