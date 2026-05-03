@@ -262,6 +262,14 @@ export type Database = {
         Args: { mission_id_input: string }
         Returns: undefined
       }
+      approve_mission: {
+        Args: { p_mission_id: string }
+        Returns: undefined
+      }
+      reject_mission: {
+        Args: { p_mission_id: string; p_reason: string | null }
+        Returns: undefined
+      }
     }
     Enums: {
       mission_rarity: 'common' | 'rare' | 'epic' | 'legendary'

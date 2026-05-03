@@ -32,59 +32,16 @@ export async function fetchPendingMissions(): Promise<PendingMission[]> {
 }
 
 export async function approveMission(missionId: string): Promise<void> {
-  const { data: mission, error: fetchError } = await supabase
-    .from('missions')
-    .select('user_id, title')
-    .eq('id', missionId)
-    .single()
-
-  if (fetchError) throw fetchError
-
-  const { error } = await supabase
-    .from('missions')
-    .update({
-      public_status: 'approved' as const,
-      rejection_reason: null,
-    })
-    .eq('id', missionId)
-
+  const { error } = await supabase.rpc('approve_mission', { p_mission_id: missionId })
   if (error) throw error
-
-  await supabase.from('notifications').insert({
-    user_id: mission.user_id,
-    type: 'mission_approved',
-    title: 'mission_approved',
-    message: mission.title,
-    mission_id: missionId,
-  })
 }
 
 export async function rejectMission(missionId: string, reason?: string): Promise<void> {
-  const { data: mission, error: fetchError } = await supabase
-    .from('missions')
-    .select('user_id, title')
-    .eq('id', missionId)
-    .single()
-
-  if (fetchError) throw fetchError
-
-  const { error } = await supabase
-    .from('missions')
-    .update({
-      public_status: 'rejected' as const,
-      rejection_reason: reason || null,
-    })
-    .eq('id', missionId)
-
-  if (error) throw error
-
-  await supabase.from('notifications').insert({
-    user_id: mission.user_id,
-    type: 'mission_rejected',
-    title: 'mission_rejected',
-    message: reason || mission.title,
-    mission_id: missionId,
+  const { error } = await supabase.rpc('reject_mission', {
+    p_mission_id: missionId,
+    p_reason: reason ?? null,
   })
+  if (error) throw error
 }
 
 export async function fetchUserNotifications(userId: string): Promise<Notification[]> {
