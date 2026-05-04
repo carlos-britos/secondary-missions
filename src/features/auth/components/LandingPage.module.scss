@@ -38,19 +38,7 @@
   width: 28px;
   height: 28px;
   border-radius: 7px;
-  border: 1px solid $color-line-strong;
-  background: linear-gradient(
-    135deg,
-    rgba($color-rarity-legendary, 0.2),
-    rgba($color-rarity-epic, 0.2)
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: $fontfamily-display;
-  font-style: italic;
-  font-size: 16px;
-  color: $color-text;
+  object-fit: cover;
 }
 
 .wordmarkText {

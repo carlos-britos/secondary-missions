@@ -34,7 +34,7 @@ export function LandingPage() {
 
       <header className={styles.header}>
         <div className={styles.wordmark}>
-          <div className={styles.wordmarkIcon}>S</div>
+          <img src="/logo.png" alt="Secondary Missions" className={styles.wordmarkIcon} />
           <span className={styles.wordmarkText}>Secondary Missions</span>
         </div>
         <Link to="/login" className={styles.loginLink}>
