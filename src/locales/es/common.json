@@ -9,5 +9,8 @@
   "create": "Crear",
   "confirm": "Confirmar",
   "back": "Volver",
-  "search": "Buscar"
+  "search": "Buscar",
+  "install_title": "Instalá la app",
+  "install_description": "Accedé más rápido desde tu pantalla de inicio",
+  "install_action": "Instalar"
 }

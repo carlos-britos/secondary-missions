@@ -1,5 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { InstallPrompt } from './InstallPrompt'
 import styles from './AppLayout.module.scss'
 
 export function AppLayout() {
@@ -33,6 +34,7 @@ export function AppLayout() {
       <main className={styles.main}>
         <Outlet />
       </main>
+      <InstallPrompt />
     </div>
   )
 }

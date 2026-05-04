@@ -9,5 +9,8 @@
   "create": "Create",
   "confirm": "Confirm",
   "back": "Back",
-  "search": "Search"
+  "search": "Search",
+  "install_title": "Install the app",
+  "install_description": "Get faster access from your home screen",
+  "install_action": "Install"
 }
