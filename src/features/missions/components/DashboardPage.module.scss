@@ -9,31 +9,91 @@
 .topBar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   margin-bottom: space(6);
 }
 
-.greeting {
-  font-family: $fontfamily-mono;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  color: $color-text-muted;
+.userMenu {
+  position: relative;
 }
 
-.logoutButton {
-  height: 32px;
-  padding: 0 space(4);
-  border-radius: radius(sm);
+.userPill {
+  display: flex;
+  align-items: center;
+  gap: space(2);
+  height: 36px;
+  padding: 0 space(4) 0 space(1);
+  border-radius: radius(full);
   border: 1px solid $color-line;
-  background: transparent;
+  background: $color-bg-card;
   color: $color-text-muted;
-  font-size: 12px;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
 
   &:hover {
-    border-color: $color-danger;
+    border-color: $color-line-strong;
+    background: $color-bg-card-hover;
+    color: $color-text-dim;
+  }
+}
+
+.userPillAvatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: radius(circle);
+  background: $color-bg-card-hover;
+  color: $color-text-faint;
+  flex-shrink: 0;
+
+  .userPill:hover & {
+    color: $color-text-muted;
+  }
+}
+
+.userPillName {
+  font-family: $fontfamily-mono;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userDropdown {
+  position: absolute;
+  top: calc(100% + space(2));
+  right: 0;
+  min-width: 180px;
+  padding: space(1);
+  border-radius: radius(sm);
+  border: 1px solid $color-line;
+  background: $color-bg-card;
+  box-shadow: $shadow-card;
+  z-index: 100;
+}
+
+.userDropdownItem {
+  display: flex;
+  align-items: center;
+  gap: space(3);
+  width: 100%;
+  height: 36px;
+  padding: 0 space(3);
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: $color-text-dim;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.12s ease;
+
+  &:hover {
+    background: rgba($color-danger, 0.08);
     color: $color-danger;
   }
 }

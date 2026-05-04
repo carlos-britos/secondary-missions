@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react'
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useQueryClient } from '@tanstack/react-query'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -46,6 +46,21 @@ export function DashboardPage() {
   const [completionTarget, setCompletionTarget] = useState<Mission | null>(null)
   const [completionMode, setCompletionMode] = useState<'complete' | 'increment'>('complete')
   const [toastAchievements, setToastAchievements] = useState<Achievement[]>([])
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const userMenuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!userMenuOpen) return
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [userMenuOpen])
 
   const runAchievementEvaluation = useCallback(
     async (userId: string) => {
@@ -160,12 +175,66 @@ export function DashboardPage() {
   return (
     <div className={styles.page}>
       <div className={styles.topBar}>
-        <span className={styles.greeting}>
-          {profile?.username ? `@${profile.username}` : '...'}
-        </span>
-        <button className={styles.logoutButton} onClick={logout}>
-          {tAuth('logout')}
-        </button>
+        <div className={styles.userMenu} ref={userMenuRef}>
+          <button
+            className={styles.userPill}
+            onClick={() => setUserMenuOpen((prev) => !prev)}
+            aria-expanded={userMenuOpen}
+            aria-haspopup="true"
+          >
+            <span className={styles.userPillAvatar}>
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="14"
+                height="14"
+                aria-hidden="true"
+              >
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v1.2c0 .7.5 1.2 1.2 1.2h16.8c.7 0 1.2-.5 1.2-1.2v-1.2c0-3.2-6.4-4.8-9.6-4.8z" />
+              </svg>
+            </span>
+            <span className={styles.userPillName}>
+              {profile?.username ? `@${profile.username}` : '...'}
+            </span>
+          </button>
+
+          <AnimatePresence>
+            {userMenuOpen && (
+              <motion.div
+                className={styles.userDropdown}
+                initial={{ opacity: 0, y: -4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+              >
+                <button
+                  className={styles.userDropdownItem}
+                  onClick={() => {
+                    setUserMenuOpen(false)
+                    logout()
+                  }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    width="14"
+                    height="14"
+                    aria-hidden="true"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                    <polyline points="16 17 21 12 16 7" />
+                    <line x1="21" y1="12" x2="9" y2="12" />
+                  </svg>
+                  {tAuth('logout')}
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       <div className={styles.tabBar}>
